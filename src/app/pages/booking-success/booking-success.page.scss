@@ -1,0 +1,34 @@
+ion-content {
+    img {
+        margin: 5rem 30px 0.5rem;
+        width: -webkit-fill-available;
+    }
+    h2 {
+        font-size: 23px;
+        font-family: 'Tofino_Medium';
+        margin-bottom: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        ion-icon {
+            color: var(--ion-color-light-green);
+            margin-left: 2px;
+        }
+    }
+    p {
+        font-size: 15px;
+        font-family: 'Tofino_Regular';
+        line-height: 20px;
+        padding: 0px 40px;
+    }
+}
+
+ion-footer {
+    ion-button {
+        font-size: 17px;
+        font-family: 'Tofino_Medium';
+        height: 48px;
+        --background: var(--gradiant);
+        --background-activated: var(--gradiant);
+    }
+}

@@ -1,0 +1,13 @@
+ion-header {
+    ion-toolbar {
+        ion-back-button {
+            --color: var(--ion-color-theme);
+        }
+        ion-title {
+            font-size: 21px;
+            font-family: 'Tofino_Medium';
+            color: var(--ion-color-black);
+            padding-inline-start: 0px;
+        }
+    }
+}

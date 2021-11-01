@@ -1,0 +1,22 @@
+<div class="container">
+    <h2 class="title">Select Date & Time</h2>
+
+    <div class="scrollContainer" style="margin-top: 18px;">
+        <div (click)="selectDate(i)" class="cal" *ngFor="let i of days">
+            <h2>{{i?.date | date:'LLL'}}</h2>
+            <div class="date" [ngClass]="{'selectedDate': i?.date == selected?.date?.date}">
+                <h2>{{i?.date | date:'d'}}</h2>
+            </div>
+            <h2>{{i?.date | date:'E'}}</h2>
+        </div>
+    </div>
+
+    <div class="scrollContainer">
+        <div (click)="selectTime(i)" *ngFor="let i of time" class="time-container">
+            <div class="time" [ngClass]="{'selectedTime': i?.value == selected?.time?.value}">
+                <h2>{{i?.value}}</h2>
+            </div>
+            <h2 class="am-pm">{{i?.prefix}}</h2>
+        </div>
+    </div>
+</div>

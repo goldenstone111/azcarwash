@@ -1,0 +1,81 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home" icon="ios-arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Confirm Booking</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="provider_section border-bottom">
+        <h5 class="title">Services</h5>
+        <p *ngFor="let j of bookingData?.services" class="bold-text">
+            <ion-icon name="add"></ion-icon> {{j?.name}}
+        </p>
+    </div>
+    <div class="provider_section border-bottom" *ngIf="bookingData?.addOnService?.length > 0">
+        <h5 class="title">Add-on Services</h5>
+        <p class="bold-text" *ngFor="let addOn of bookingData?.addOnService">
+            <ion-icon name="add"></ion-icon> {{addOn?.name}}
+        </p>
+    </div>
+    <div class="provider_section border-bottom">
+        <h5 class="title">Employee</h5>
+        <p class="bold-text">
+            {{(bookingData?.empData | async)?.name}}
+            <span *ngIf="!(bookingData?.empData | async)">Not Assigned Yet</span>
+        </p>
+    </div>
+    <div class="car_selected border-bottom">
+        <h5 class="title">Car Selected</h5>
+        <p class="bold-text">
+            {{(bookingData?.userCar | async)?.Model}}
+        </p>
+        <p class="small-text">{{(bookingData?.userCar | async)?.Number}}</p>
+    </div>
+    <div class="location_selected border-bottom">
+        <h5 class="title">Services Location</h5>
+        <p class="address-text">
+            ({{(bookingData?.address | async)?.title}})
+            <br> Parking Level: {{(bookingData?.address | async)?.parkingLvl}}
+            <br> Parking Lot: {{(bookingData?.address | async)?.lot}}
+        </p>
+    </div>
+    <div class="car_selected border-bottom">
+        <h5 class="title">Date & Time</h5>
+        <p class="bold-text">
+            {{ bookingData?.startTime | date }}
+        </p>
+        <p class="small-text">{{bookingData?.startTime | date:'h:mm a'}}</p>
+    </div>
+
+    <div class="services_total_section">
+        <h5 class="title" *ngIf="bookingData?.Type != 'PACKAGE'">Services</h5>
+        <ng-container *ngIf="bookingData?.Type != 'PACKAGE'">
+            <ion-row *ngFor="let j of bookingData?.services">
+                <ion-col class="ion-no-padding service-label" size="8">{{j?.name}}</ion-col>
+                <ion-col size="4" class="ion-text-right ion-no-padding price-label">
+                    <small class="rm">RM</small> {{j?.price}}
+                </ion-col>
+            </ion-row>
+        </ng-container>
+        <ng-container *ngIf="bookingData?.addOnService?.length > 0">
+            <h5 class="title">Add-on Service</h5>
+            <ion-row *ngFor="let addOn of bookingData?.addOnService">
+                <ion-col class="ion-no-padding service-label" size="8">{{addOn?.name}}</ion-col>
+                <ion-col size="4" class="ion-text-right ion-no-padding price-label">
+                    <small class="rm">RM</small> {{addOn?.price}}
+                </ion-col>
+            </ion-row>
+        </ng-container>
+        <ion-row>
+            <ion-col class="ion-no-padding service-label" size="8">Tax ({{bookingData?.taxPercentage}}%)</ion-col>
+            <ion-col size="4" class="ion-text-right ion-no-padding price-label">+ <small class="rm">RM</small> {{bookingData?.tax}}</ion-col>
+        </ion-row>
+        <ion-row style="margin-top: 5px;">
+            <ion-col class="ion-no-padding service-label" size="8">Amount Payable</ion-col>
+            <ion-col size="4" class="ion-text-right ion-no-padding total-label"><small class="rm">RM</small> {{bookingData?.total}}</ion-col>
+        </ion-row>
+    </div>
+</ion-content>

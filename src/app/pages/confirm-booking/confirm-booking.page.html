@@ -1,0 +1,122 @@
+<ion-header no-border="no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home" icon="ios-arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Confirm Booking</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="bookings.Type != 'PACKAGE'" class="provider_section border-bottom">
+        <h5 class="title">Services</h5>
+        <p *ngFor="let i of bookings?.services" class="bold-text">
+            <ion-icon name="add"></ion-icon>
+            {{i?.name}}
+        </p>
+    </div>
+    <div *ngIf="bookings.Type == 'PACKAGE'" class="provider_section border-bottom">
+        <h5 class="title">Package Name</h5>
+        <p class="bold-text">
+            {{bookingData?.selectedCar?.Model}}
+        </p>
+    </div>
+
+    <div class="car_selected border-bottom">
+        <h5 class="title">Car Selected</h5>
+        <p class="bold-text">
+            {{bookingData?.selectedCar?.Brand}}
+        </p>
+        <p class="bold-text">
+            {{bookingData?.selectedCar?.Model}}
+        </p>
+        <p class="small-text">{{bookingData?.selectedCar?.Number}}</p>
+    </div>
+    <div class="location_selected border-bottom">
+        <h5 class="title">Services Location</h5>
+        <p class="small-text">Worker will come to serve the location</p>
+        <p class="address-text">({{bookingData?.address?.title}}) {{bookingData?.address?.condoName}}
+            <br> Parking Level: {{bookingData?.address?.parkingLvl}}
+            <br> Parking Lot: {{bookingData?.address?.lot}}
+        </p>
+    </div>
+    <div class="car_selected border-bottom">
+        <h5 class="title">Date & Time</h5>
+        <p class="bold-text">
+            {{ bookingData?.dateTime?.date?.date | date }}
+        </p>
+        <p class="small-text">{{bookingData?.dateTime?.time?.in12}} {{bookingData?.dateTime?.time?.prefix}}
+        </p>
+    </div>
+    <p *ngIf="bookings.Type != 'PACKAGE' && addOnService.length != 0" class="label-add-on">Add-on Services</p>
+    <div *ngIf="bookings.Type != 'PACKAGE' && addOnService.length != 0" class="add-on-list">
+        <ion-item lines="none" *ngFor="let addon of addOnService" (click)="onAddOnSelect(addon)">
+            <ion-avatar slot="start">
+                <img [src]="addon?.image" alt=""></ion-avatar>
+            <ion-label>
+                <h3>{{addon?.name}}
+                    <div class="radio-section">
+                        <div class="label-text">
+                            <small class="rm">RM</small> <span *ngIf="bookingData?.selectedCar?.Type == 'small'">{{addon?.priceSmall}}</span>
+                            <span *ngIf="bookingData?.selectedCar?.Type == 'medium'">{{addon?.priceMedium}}</span>
+                            <span *ngIf="bookingData?.selectedCar?.Type == 'large'">{{addon?.priceLarge}}</span>
+                        </div>
+                        <input checked="true" id="s" type="checkbox" class="css-checkbox" *ngIf="addon?.select" />
+                        <input id="unChecked" type="checkbox" class="css-checkbox" *ngIf="!addon?.select" />
+                    </div>
+                </h3>
+                <p>
+                    <b>Duration : </b> {{addon?.duration}} min
+                </p>
+                <p>
+                    <b>Detailing Product : </b> {{addon?.description}}
+                </p>
+            </ion-label>
+        </ion-item>
+    </div>
+    <div *ngIf="bookings.Type != 'PACKAGE'" class="services_total_section">
+        <h5 class="title">Services Selected</h5>
+        <ng-container *ngFor="let i of bookingData?.servicesWithcet">
+            <ng-container *ngFor="let j of i?.services">
+                <ion-row *ngIf="j.select">
+                    <ion-col class="ion-no-padding service-label" size="8">{{j?.name}}</ion-col>
+                    <ion-col size="4" class="ion-text-right ion-no-padding price-label">
+                        <small class="rm">RM</small> <span *ngIf="bookingData?.selectedCar?.Type == 'small'">{{j?.priceSmall}}</span>
+                        <span *ngIf="bookingData?.selectedCar?.Type == 'medium'">{{j?.priceMedium}}</span>
+                        <span *ngIf="bookingData?.selectedCar?.Type == 'large'">{{j?.priceLarge}}</span>
+                    </ion-col>
+                </ion-row>
+            </ng-container>
+        </ng-container>
+        <ion-row>
+            <ion-col class="ion-no-padding service-label" size="8">Tax ({{getTax}}%)</ion-col>
+            <ion-col size="4" class="ion-text-right ion-no-padding price-label">+ <small class="rm">RM</small>{{bookings.tax | number:'1.1-2'}}</ion-col>
+        </ion-row>
+        <ion-row style="margin-top: 5px;">
+            <ion-col class="ion-no-padding service-label" size="8">Amount Payable</ion-col>
+            <ion-col size="4" class="ion-text-right ion-no-padding total-label"><small class="rm">RM</small>{{(bookings.serviceTotal + bookings.tax + bookings.addOnServiceTotal) | number:'1.1-2'}}</ion-col>
+        </ion-row>
+    </div>
+
+    <div *ngIf="bookings.Type == 'PACKAGE'" class="services_total_section">
+        <h5 class="title">Services Included in Package</h5>
+        <ion-row *ngFor="let j of packageInfo.servicesData">
+            <ion-col class="ion-no-padding service-label" size="12">{{j?.name}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="ion-no-padding service-label" size="8">Tax ({{getTax}}%)</ion-col>
+            <ion-col size="4" class="ion-text-right ion-no-padding price-label">+ <small class="rm">RM</small> {{bookings.tax | number:'1.1-2'}}</ion-col>
+        </ion-row>
+        <ion-row style="margin-top: 5px;">
+            <ion-col class="ion-no-padding service-label" size="8">Amount Payable</ion-col>
+            <ion-col size="4" class="ion-text-right ion-no-padding total-label"><small class="rm">RM</small> {{bookings.serviceTotal+bookings.tax}}
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-button (click)="payNow()" class="ion-no-margin ion-text-capitalize" expand="full">
+        Process to Payment
+    </ion-button>
+</ion-footer>

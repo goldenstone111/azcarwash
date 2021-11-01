@@ -1,0 +1,27 @@
+<ion-list>
+    <ion-radio-group allow-empty-selection>
+        <ion-item lines="none" no-border *ngFor="let i of (carCollection | async)">
+            <div class="carInfo">
+                <img [src]="i?.image_1">
+                <div class="conent">
+                    <h2>{{i?.Model}}</h2>
+                    <p>{{i?.Number}}</p>
+                </div>
+            </div>
+            <ion-radio [checked]="i?.id == selectedCar" (ionSelect)="onCarSelect(i)" slot="end" color="primary"></ion-radio>
+        </ion-item>
+
+        <ion-item (click)="goToAddCar()" lines="none" no-border>
+            <div class="carInfo">
+                <div class="addCircle">
+                    <ion-icon name="md-add" slot="end"></ion-icon>
+                </div>
+                <div class="conent">
+                    <h2>Add a new car</h2>
+                    <p>Tap to add</p>
+                </div>
+            </div>
+            <ion-icon name="md-add" slot="end"></ion-icon>
+        </ion-item>
+    </ion-radio-group>
+</ion-list>

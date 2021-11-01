@@ -1,0 +1,303 @@
+<ion-content [forceOverscroll]="true" no-bounce>
+    <div class="menu">
+        <ion-buttons>
+            <ion-menu-button *ngIf="!menuToggle"></ion-menu-button>
+            <ion-menu-button *ngIf="menuToggle">
+                <ion-icon name="md-close"></ion-icon>
+            </ion-menu-button>
+        </ion-buttons>
+    </div>
+    <div #map id="map" class="mapStyle"></div>
+    <div class="bottomNavigator">
+        <div class="myanimated ion-bottom-drawer" [@slideInOut]="animationState">
+            <div class="drawer-content drawer-back-content">
+                <ion-list
+                    [ngStyle]="{'background': state == 3 ? 'var(--gray)' : 'white','margin-bottom': '0px'}">
+                    <div class="ion-list-header">
+                        <ion-button class="closeBtn" fill="clear" (click)="closeDrawer()">
+                            <ion-icon name="ios-arrow-down"></ion-icon>
+                        </ion-button>
+                    </div>
+                </ion-list>
+            </div>
+
+            <div *ngIf="state == 1" class="carCollection">
+                <ion-list>
+                    <ion-radio-group>
+                        <ion-item lines="none" no-border
+                            *ngFor="let i of carCollection | orderBy: 'Model' : false : true">
+                            <div class="carInfo">
+                                <img src="assets/imgs/download.png" [style.display]="i.loaded ? 'none' : 'unset'" />
+                                <img [src]="i?.image_1" (load)="i.loaded = true"
+                                    [style.display]="i.loaded ? 'unset' : 'none'" />
+                                <div class="conent">
+                                    <h2>{{i?.Model}}</h2>
+                                    <p>{{i?.Number}}</p>
+                                </div>
+                            </div>
+                            <ion-radio [checked]="i?.id == selectedData.selectedCar.id" (ionSelect)="onCarSelect(i)"
+                                slot="end" color="primary"></ion-radio>
+                        </ion-item>
+
+                        <ion-item (click)="_navigateToAddCarPage()" lines="none" no-border>
+                            <div class="carInfo">
+                                <div class="addCircle">
+                                    <ion-icon name="md-add" slot="end"></ion-icon>
+                                </div>
+                                <div class="conent">
+                                    <h2>Add a new car</h2>
+                                    <p>Tap to add</p>
+                                </div>
+                            </div>
+                            <ion-icon name="md-add" slot="end"></ion-icon>
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
+            </div>
+
+            <div class="serviceList" *ngIf="state == 2">
+                <ng-container *ngFor="let i of cetegoryWithServices | orderBy: 'seqNumber' : false : true">
+                    <div class="categoryTitle">
+                        <h2>
+                            {{i?.name}}
+                            <ion-button (click)="viewInfo(i)" class="btn-infor ion-no-margin" fill="clear">
+                                <ion-icon name="information-circle-outline"></ion-icon>
+                            </ion-button>
+                        </h2>
+                    </div>
+                    <div (click)="onServiceSelect(j)" class="flexBox"
+                        *ngFor="let j of i?.services | orderBy: 'seqNumber' : false : true">
+                        <img src="assets/imgs/download.png" [style.display]="j.loaded ? 'none' : 'unset'" />
+                        <img [src]="j?.image" (load)="j.loaded = true" [style.display]="j.loaded ? 'unset' : 'none'" />
+
+                        <div class="info" [ngClass]="{'selected': j.select}">
+                            <div class="service-info">
+                                <div class="part-1">
+                                    <h2>
+                                        <b>{{j?.name}}</b>
+                                    </h2>
+                                    <h2>
+                                        <small>
+                                            <b>Duration:</b>
+                                            {{j?.duration | minuteSeconds}}</small>
+                                    </h2>
+                                </div>
+
+                            </div>
+                            <p><b>Detailing Product :</b> {{j?.description}}</p>
+                        </div>
+
+                        <h2 class="service-price">
+                            <small class="rm">RM</small>
+                            <span *ngIf="selectedData?.selectedCar?.Type == 'small'">{{j?.priceSmall}}</span>
+                            <span *ngIf="selectedData?.selectedCar?.Type == 'medium'">{{j?.priceMedium}}</span>
+                            <span *ngIf="selectedData?.selectedCar?.Type == 'large'">{{j?.priceLarge}}</span>
+                        </h2>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="dateTime" *ngIf="state == 3">
+                <div class="container">
+                    <h2 class="title">Select Date & Time</h2>
+
+                    <div class="scrollContainer" style="margin-top: 18px">
+                        <div (click)="onDateSelect(i)" class="cal" *ngFor="let i of days">
+                            <h2>{{i?.date | date:'LLL'}}</h2>
+                            <div class="date" [ngClass]="{'selectedDate': i?.date == selected?.date?.date}">
+                                <h2>{{i?.date | date:'d'}}</h2>
+                            </div>
+                            <h2>{{i?.date | date:'E'}}</h2>
+                        </div>
+                    </div>
+
+                    <div class="scrollContainer">
+                        <div *ngFor="let i of time" [ngClass]="{'disabledTime': i?.notNow || i?.availabelEmp?.length <= 0  }">
+                            <input type="radio" (click)="onTimeSelect(i)" [disabled]="i?.notNow || i?.availabelEmp?.length <= 0" [checked]="i?.in24 == selected?.time?.in24" id="{{i?.in12}}" name="animal" [value]="i" />
+                            <label for="{{i?.in12}}"><span>{{i?.in12}}</span>{{i?.prefix}}</label>
+                        </div>
+
+                        <!-- <div>
+                            <input type="radio" id="cat2" name="animal" value="" />
+                            <label for="cat2"><span>11:00</span>Pm</label>
+                        </div>
+
+                        <div class="radioDisabled">
+                            <input type="radio" disabled id="cat3" name="animal" value="" />
+                            <label for="cat3"><span>12:00</span>Pm</label>
+                        </div>
+
+                        <div (click)="onTimeSelect(i)" *ngFor="let i of time" class="time-container"
+                            [ngClass]="{'disabledTime': i?.notNow || i?.availabelEmp?.length <= 0  }" 
+                            [ngStyle]="{'pointer-events': i?.notNow || i?.availabelEmp?.length <= 0 ? 'none' : 'auto'}"
+                            >
+                            <div class="time" [ngClass]="{'selectedTime': i?.in24 == selected?.time?.in24}">
+                                <h2>{{i?.in12}}</h2>
+                            </div>
+                            <h2 class="am-pm">{{i?.prefix}}</h2>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="firstRow">
+            <div (click)="onSegmentSelect(1)" class="option">
+                <div class="icon-container" [ngClass]="{'active': state == 1}">
+                    <ion-icon name="md-car"></ion-icon>
+                </div>
+                <p>Select Car</p>
+                <h2>{{selectedData?.selectedCar?.Brand}}</h2>
+            </div>
+            <div (click)="onSegmentSelect(2)" class="option" [ngClass]="{'disabled': !isSelected.isCarSelected}">
+                <div class="icon-container" [ngClass]="{'active': state == 2}">
+                    <ion-icon name="md-settings"></ion-icon>
+                </div>
+                <p>Services</p>
+                <h2 *ngIf="selectedService">{{selectedService}}...</h2>
+            </div>
+            <div (click)="onSegmentSelect(3)" class="option" [ngClass]="{'disabled': !isSelected.isServiceSelected}">
+                <div class="icon-container" [ngClass]="{'active': state == 3}">
+                    <ion-icon name="md-calendar"></ion-icon>
+                </div>
+                <p>When ?</p>
+                <h2>
+                    {{selected?.date?.date | date:'dd MMM,'}} {{selected?.time?.prefix}}
+                </h2>
+            </div>
+        </div>
+        <div class="secondRow">
+            <div [ngClass]="{'disabled': !isSelected.isDateSelected}">
+                <div (click)="_getAvailableCondos(0)" [ngClass]="{'active': state == 4}" class="icon-container">
+                    <ion-icon name="pin"></ion-icon>
+                </div>
+            </div>
+            <div (click)="_navigateToSelectAddressPage()" class="service-text">
+                <h2>Service Location</h2>
+                <p>
+                    <ion-icon name="md-locate"></ion-icon>
+                    {{location?.condoName ? location?.condoName : 'AZ-AutoDetailing'}}
+                </p>
+            </div>
+            <ion-button (click)="_getAvailableCondos(1)" shape="round" fill="outline" class="bookRoundBtn" fill="clear"
+                [ngClass]="{'disabled': !isSelected.isDateSelected}">
+                Book Now
+            </ion-button>
+        </div>
+    </div>
+</ion-content>
+
+<!-- <ion-bottom-drawer style="height: 44%;" [disableDrag]="true" [(state)]="drawerState" [minimumHeight]="minimumHeight"
+    [dockedHeight]="dockedHeight" [shouldBounce]="shouldBounce" [distanceTop]="distanceTop">
+    <div class="drawer-content drawer-back-content">
+        <ion-list
+            [ngStyle]="{'background': state == 3 ? 'var(--gray)' : 'white','margin-bottom': state == 3 ? '0px' : '32px'}">
+            <ion-list-header>
+                <ion-button class="closeBtn" fill="clear" (click)="closeDrawer()">
+                    <ion-icon name="ios-arrow-down"></ion-icon>
+                </ion-button>
+            </ion-list-header>
+        </ion-list>
+    </div>
+
+    <div *ngIf="state == 1" class="carCollection">
+        <ion-list>
+            <ion-radio-group>
+                <ion-item lines="none" no-border *ngFor="let i of carCollection | orderBy: 'Model' : false : true">
+                    <div class="carInfo">
+                        <img src="assets/imgs/download.png" [style.display]="i.loaded ? 'none' : 'unset'" />
+                        <img [src]="i?.image_1" (load)="i.loaded = true"
+                            [style.display]="i.loaded ? 'unset' : 'none'" />
+                        <div class="conent">
+                            <h2>{{i?.Model}}</h2>
+                            <p>{{i?.Number}}</p>
+                        </div>
+                    </div>
+                    <ion-radio [checked]="i?.id == selectedData.selectedCar.id" (ionSelect)="onCarSelect(i)" slot="end"
+                        color="primary"></ion-radio>
+                </ion-item>
+
+                <ion-item (click)="_navigateToAddCarPage()" lines="none" no-border>
+                    <div class="carInfo">
+                        <div class="addCircle">
+                            <ion-icon name="md-add" slot="end"></ion-icon>
+                        </div>
+                        <div class="conent">
+                            <h2>Add a new car</h2>
+                            <p>Tap to add</p>
+                        </div>
+                    </div>
+                    <ion-icon name="md-add" slot="end"></ion-icon>
+                </ion-item>
+            </ion-radio-group>
+        </ion-list>
+    </div>
+
+    <div class="serviceList" *ngIf="state == 2">
+        <ng-container *ngFor="let i of cetegoryWithServices | orderBy: 'seqNumber' : false : true">
+            <div class="categoryTitle">
+                <h2>
+                    {{i?.name}}
+                    <ion-button (click)="viewInfo(i)" class="btn-infor ion-no-margin" fill="clear">
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                    </ion-button>
+                </h2>
+            </div>
+            <div (click)="onServiceSelect(j)" class="flexBox"
+                *ngFor="let j of i?.services | orderBy: 'seqNumber' : false : true">
+                <img src="assets/imgs/download.png" [style.display]="j.loaded ? 'none' : 'unset'" />
+                <img [src]="j?.image" (load)="j.loaded = true" [style.display]="j.loaded ? 'unset' : 'none'" />
+
+                <div class="info" [ngClass]="{'selected': j.select}">
+                    <div class="service-info">
+                        <div class="part-1">
+                            <h2>
+                                <b>{{j?.name}}</b>
+                            </h2>
+                            <h2>
+                                <small>
+                                    <b>Duration:</b>
+                                    {{j?.duration | minuteSeconds}}</small>
+                            </h2>
+                        </div>
+
+                    </div>
+                    <p><b>Detailing Product :</b> {{j?.description}}</p>
+                </div>
+
+                <h2 class="service-price">
+                    <small class="rm">RM</small>
+                    <span *ngIf="selectedData?.selectedCar?.Type == 'small'">{{j?.priceSmall}}</span>
+                    <span *ngIf="selectedData?.selectedCar?.Type == 'medium'">{{j?.priceMedium}}</span>
+                    <span *ngIf="selectedData?.selectedCar?.Type == 'large'">{{j?.priceLarge}}</span>
+                </h2>
+            </div>
+        </ng-container>
+    </div>
+
+    <div class="dateTime" *ngIf="state == 3">
+        <div class="container">
+            <h2 class="title">Select Date & Time</h2>
+
+            <div class="scrollContainer" style="margin-top: 18px">
+                <div (click)="onDateSelect(i)" class="cal" *ngFor="let i of days">
+                    <h2>{{i?.date | date:'LLL'}}</h2>
+                    <div class="date" [ngClass]="{'selectedDate': i?.date == selected?.date?.date}">
+                        <h2>{{i?.date | date:'d'}}</h2>
+                    </div>
+                    <h2>{{i?.date | date:'E'}}</h2>
+                </div>
+            </div>
+
+            <div class="scrollContainer">
+                <div (click)="onTimeSelect(i)" *ngFor="let i of time" class="time-container"
+                    [ngClass]="{'disabledTime': i?.notNow || i?.availabelEmp?.length <= 0  }">
+                    <div class="time" [ngClass]="{'selectedTime': i?.in24 == selected?.time?.in24}">
+                        <h2>{{i?.in12}}</h2>
+                    </div>
+                    <h2 class="am-pm">{{i?.prefix}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ion-bottom-drawer> -->

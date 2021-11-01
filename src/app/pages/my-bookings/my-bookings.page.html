@@ -1,0 +1,123 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home" icon="ios-arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>My Bookings</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <h6 class="title" *ngIf="isDataAva?.upComing != 0">Upcoming Bookings</h6>
+    <ng-container *ngFor="let i of (bookingCollection | async)">
+        <div *ngIf="i?.status <= 1" class="card-div up-coming-book">
+            <div class="profile-div">
+                <img class="profile-image" src="{{(i?.condoData | async)?.image}}" alt="">
+            </div>
+            <div class="info-section">
+                <h4 class="name-label">{{(i.condoData | async)?.name}}</h4>
+                <p class="address-text">
+                    {{(i.addressData | async)?.condoName}}
+                    <br> Parking Level: {{(i.addressData | async)?.parkingLvl}}
+                    <br> Parking Lot: {{(i.addressData | async)?.lot}}
+                </p>
+                <p class="book-info" *ngIf="(i?.empData | async)?.name">Booking for &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <b>{{(i?.empData | async)?.name}}</b>
+                </p>
+                <p class="book-info">Date & Time &nbsp;&nbsp;&nbsp;&nbsp;
+                    <b>{{i?.startTime}}</b>
+                </p>
+                <p class="book-info">Booking for &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <b>
+                        <span *ngFor="let j of i?.services; let last = last;">{{j?.name}}
+                            <span *ngIf="!last">,</span>
+                        </span>
+                    </b>
+                </p>
+                <p class="book-info">
+                    Type &nbsp;&nbsp;&nbsp;&nbsp;
+                    <ng-container *ngIf="i?.Type == 'SERVICES'">
+                        <b *ngIf="i?.services?.length == 1">
+                            {{(i?.categoryData | async)?.name}}
+                        </b>
+                        <b *ngIf="i?.services?.length > 1">
+                            Interior & Exterior
+                        </b>
+                    </ng-container>
+                    <ng-container *ngIf="i?.Type != 'SERVICES'">
+                        <b>
+                            {{i?.Type}}
+                        </b>
+                    </ng-container>
+                </p>
+            </div>
+            <div class="btn-div">
+                <ion-button *ngIf="i?.status == 0" size="small" shape="round" class="ion-text-capitalize btn-pending">
+                    Pending</ion-button>
+                <ion-button *ngIf="i?.status == 1" size="small" shape="round" class="ion-text-capitalize btn-confirm">
+                    Confirmed</ion-button>
+                <ion-button *ngIf="i?.hours <= -2" (click)="cancelOrder(i)" size="small" shape="round"
+                    class="ion-text-capitalize btn-cancle">Cancel</ion-button>
+                <ion-button (click)="onViewMore(i)" size="small" shape="round" class="ion-text-capitalize btn-view">View
+                    more</ion-button>
+            </div>
+        </div>
+    </ng-container>
+
+    <h6 class="title" *ngIf="isDataAva?.past != 0">Past Bookings</h6>
+    <ng-container *ngFor="let i of (bookingCollection | async)">
+        <div *ngIf="i?.status > 1" class="card-div past-book">
+            <div class="profile-div">
+                <img class="profile-image" src="{{(i?.condoData | async)?.image}}" alt="">
+            </div>
+            <div class="info-section">
+                <h4 class="name-label">{{(i.condoData | async)?.name}}</h4>
+                <p class="address-text">
+                    <!-- {{(i.userAddress | async)?.}} -->
+                    <br> Parking Level: {{(i.userAddress | async)?.parkingLvl}}
+                    <br> Parking Lot: {{(i.userAddress | async)?.lot}}
+                </p>
+                <p class="book-info">Booking for &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <b>{{(i?.empData | async)?.name}}</b>
+                </p>
+                <p class="book-info">Date & Time &nbsp;&nbsp;&nbsp;&nbsp;
+                    <b>{{i?.startTime}}</b>
+                </p>
+                <p class="book-info">Booking for &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <b>
+                        <span *ngFor="let j of i?.services; let last = last;">{{j?.name}}
+                            <span *ngIf="!last">,</span>
+                        </span>
+                    </b>
+                </p>
+                <p class="book-info">Type &nbsp;&nbsp;&nbsp;&nbsp;
+                    <ng-container *ngIf="i?.Type == 'SERVICES'">
+                        <b *ngIf="i?.services?.length == 1">
+                            Interior or Exterior.
+                        </b>
+                        <b *ngIf="i?.services?.length > 1">
+                            Interior & Exterior
+                        </b>
+                    </ng-container>
+                    <ng-container *ngIf="i?.Type != 'SERVICES'">
+                        <b>{{i?.Type}}</b>
+                    </ng-container>
+                </p>
+            </div>
+            <div class="btn-div">
+                <ion-button *ngIf="i?.status != 3" size="small" shape="round" class="ion-text-capitalize btn-confirm">
+                    Confirmed</ion-button>
+                <ion-button *ngIf="i?.status == 3" size="small" shape="round" class="ion-text-capitalize btn-cancle">
+                    Cancelled</ion-button>
+                <ion-button (click)="onViewMore(i)" size="small" shape="round" class="ion-text-capitalize btn-view">View
+                    more</ion-button>
+                <ion-button *ngIf="!i?.reviewGiven" (click)="onRate(i)" size="small" shape="round"
+                    class="ion-text-capitalize btn-rate">Rate Now</ion-button>
+            </div>
+        </div>
+    </ng-container>
+
+    <div class="noDataFullScreen" *ngIf="isDataAva?.upComing == 0 && isDataAva?.past == 0">
+        <h2>No data found</h2>
+    </div>
+</ion-content>

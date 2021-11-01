@@ -1,0 +1,298 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+
+/* Core CSS required for Ionic components to work properly */
+
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+* {
+     ::-webkit-scrollbar {
+        display: none !important;
+    }
+}
+
+.bundle-modal {
+    --height: 310px;
+    --max-height: 395px;
+    padding: 0px 20px;
+    --border-radius: 24px;
+    --background: #04040f;
+}
+
+.location-modal {
+    --height: 186px;
+    --max-height: 340px;
+    --background: #04040f;
+    --border-radius: 9px;
+    padding: 0px 20px;
+    .modal-wrapper {
+        transform: translateY(39px) !important;
+    }
+}
+
+.btn-style {
+    width: 100%;
+    height: 52px;
+    font-size: 16px;
+    margin-top: 26px;
+    font-family: 'tofini_regular';
+    --box-shadow: none;
+    --background: var(--gradiant);
+}
+
+.popoverStyle {
+    background: red;
+}
+
+.noDataFullScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 83%;
+}
+
+.btn-style-2 {
+    --background: var(--ion-color-themeGray);
+}
+
+.gradient-text {
+    font-size: 16px;
+    background: var(--gradiant);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+app-home,
+app-location-detail {
+    .gmnoprint {
+        display: none;
+    }
+    .gm-control-active {
+        display: none;
+    }
+}
+
+.clearBtn {
+    --padding-start: 0;
+    --padding-end: 0;
+    height: auto;
+    width: auto;
+    text-transform: initial;
+}
+
+.toastStyle {
+    --background: var(--ion-color-primary) !important;
+    font-family: 'tofini_medium';
+    color: var(--ion-color-white)
+}
+
+.toastStyleError {
+    --background: #BD362F !important;
+    font-family: 'tofini_medium';
+    color: white !important;
+}
+
+ion-button {
+    --ripple-color: transparent;
+}
+
+.sk-chase {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    animation: sk-chase 2.5s infinite linear both;
+}
+
+.sk-chase-dot {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: sk-chase-dot 2.0s infinite ease-in-out both;
+}
+
+.sk-chase-dot:before {
+    content: '';
+    display: block;
+    width: 25%;
+    height: 25%;
+    background-color: var(--ion-color-primary);
+    border-radius: 100%;
+    animation: sk-chase-dot-before 2.0s infinite ease-in-out both;
+}
+
+.sk-chase-dot:nth-child(1) {
+    animation-delay: -1.1s;
+}
+
+.sk-chase-dot:nth-child(2) {
+    animation-delay: -1.0s;
+}
+
+.sk-chase-dot:nth-child(3) {
+    animation-delay: -0.9s;
+}
+
+.sk-chase-dot:nth-child(4) {
+    animation-delay: -0.8s;
+}
+
+.sk-chase-dot:nth-child(5) {
+    animation-delay: -0.7s;
+}
+
+.sk-chase-dot:nth-child(6) {
+    animation-delay: -0.6s;
+}
+
+.sk-chase-dot:nth-child(1):before {
+    animation-delay: -1.1s;
+}
+
+.sk-chase-dot:nth-child(2):before {
+    animation-delay: -1.0s;
+}
+
+.sk-chase-dot:nth-child(3):before {
+    animation-delay: -0.9s;
+}
+
+.sk-chase-dot:nth-child(4):before {
+    animation-delay: -0.8s;
+}
+
+.sk-chase-dot:nth-child(5):before {
+    animation-delay: -0.7s;
+}
+
+.sk-chase-dot:nth-child(6):before {
+    animation-delay: -0.6s;
+}
+
+@keyframes sk-chase {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes sk-chase-dot {
+    80%,
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes sk-chase-dot-before {
+    50% {
+        transform: scale(0.4);
+    }
+    100%,
+    0% {
+        transform: scale(1.0);
+    }
+}
+
+.custom-loader {
+    --background: transparent;
+    ion-backdrop {
+        background-color: #000;
+        opacity: .9 !important;
+    }
+    .loading-wrapper {
+        -webkit-animation: ld-vortex-out 2s ease-out infinite;
+        animation: ld-vortex-out 2s ease-out infinite;
+        animation-timing-function: cubic-bezier(0.05, 0, 3, 0.05);
+        min-width: 90px;
+        min-height: 90px;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+}
+
+.err {
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 4px;
+    color: #f00;
+}
+
+ion-item {
+    --highlight-height: 0px;
+}
+
+.ng-select-container {
+    border: none !important;
+    border-bottom: 1px solid #ccc !important;
+}
+
+.ng-arrow-wrapper {
+    margin-right: 11px !important;
+}
+
+.ng-input {
+    input::placeholder {
+        font-size: 15px;
+        font-family: "tofini_bold";
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+        color: red;
+    }
+}
+
+.ng-value,
+.ng-option {
+    font-family: "tofini_bold" !important;
+    display: flex !important;
+    /* justify-content: center; */
+    align-items: center !important;
+    img {
+        margin-right: 8px;
+        margin-bottom: -2px;
+        height: 35px;
+        width: 35px;
+        &:last-child {
+            height: 27px;
+            width: 29px;
+        }
+    }
+}
+
+.ng-value-container {
+    padding-left: 0px !important;
+}
+
+.ng-placeholder {
+    font-size: 17px;
+    color: #898891 !important;
+    font-family: "tofini_medium";
+}

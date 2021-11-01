@@ -1,0 +1,20 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home" icon="ios-arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Add Review</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="rating-bar">
+        <ion-icon (click)="selectStar=1" [ngClass]="{'active': selectStar >= 1}" [name]="selectStar >= 1 ? 'md-star' : 'md-star-outline'"></ion-icon>
+        <ion-icon (click)="selectStar=2" [ngClass]="{'active': selectStar >= 2}" [name]="selectStar >= 2 ? 'md-star' : 'md-star-outline'"></ion-icon>
+        <ion-icon (click)="selectStar=3" [ngClass]="{'active': selectStar >= 3}" [name]="selectStar >= 3 ? 'md-star' : 'md-star-outline'"></ion-icon>
+        <ion-icon (click)="selectStar=4" [ngClass]="{'active': selectStar >= 4}" [name]="selectStar >= 4 ? 'md-star' : 'md-star-outline'"></ion-icon>
+        <ion-icon (click)="selectStar=5" [ngClass]="{'active': selectStar >= 5}" [name]="selectStar >= 5 ? 'md-star' : 'md-star-outline'"></ion-icon>
+    </div>
+    <ion-input [(ngModel)]="text" placeholder="Let us know your experience with store"></ion-input>
+    <ion-button (click)="addReview()" expand="block" shape="round" class="ion-text-capitalize">Submit Review</ion-button>
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-content>
+    <div class="start-ribin">{{data?.avgRating | number:'1.1-1'}}
+        <ion-icon name="md-star"></ion-icon>
+    </div>
+    <div class="container">
+        <div class="row1">
+            <div class="icon-container">
+                <img *ngIf="userAddress?.title == 'Home'" src="https://images.vexels.com/media/users/3/157343/isolated/preview/fa058a304813b6d204d29253f5cb90d4-flat-home-house-icon-by-vexels.png">
+                <img *ngIf="userAddress?.title == 'Office'" src="https://cdn0.iconfinder.com/data/icons/market-and-economics-19/48/56-512.png">
+                <img *ngIf="userAddress?.title == 'Other'" src="https://cdn0.iconfinder.com/data/icons/market-and-economics-19/48/56-512.png">
+            </div>
+            <div class="locationInfo">
+                <h2>({{userAddress?.title}}) {{userAddress?.condoName}}</h2>
+                <p>{{userAddress?.adressLine}}
+                    <br> Parking Level: {{userAddress?.parkingLvl}}
+                    <br> Parking Lot: {{userAddress?.lot}}
+                </p>
+            </div>
+        </div>
+        <div class="row2">
+            <ion-button class="call-icon" fill="clear">
+                <a href="tel:{{data?.phoneNumber}}">
+                    <ion-icon icon-only name="md-call"></ion-icon>
+                </a>
+            </ion-button>
+            <div class="priceInfo">
+                <h2>Operation</h2>
+                <p>{{data?.startTime}} - {{data?.endTime}}</p>
+            </div>
+            <ion-button (click)="goTOLocation()" shape="round" fill="outline">Book Now</ion-button>
+        </div>
+    </div>
+
+</ion-content>

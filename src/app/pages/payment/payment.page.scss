@@ -1,0 +1,63 @@
+ion-header {
+    ion-toolbar {
+        --background: var(--gray);
+        ion-back-button {
+            --color: var(--ion-color-theme);
+        }
+        ion-title {
+            font-size: 21px;
+            font-family: 'Tofino_Medium';
+            color: var(--ion-color-black);
+            padding-inline-start: 0px;
+        }
+    }
+}
+
+ion-content {
+    .select-title {
+        font-size: 16px;
+        font-family: 'Tofino_Medium';
+        padding-left: 20px;
+    }
+    ion-list {
+        ion-item {
+            --background: var(--gray);
+            --min-height: 65px;
+            margin: 5px 0px;
+            ion-label {
+                font-family: 'Tofino_Medium';
+                font-size: 15px;
+            }
+            ion-radio {
+                --color: var(--ion-color-theme);
+                --color-checked: var(--ion-color-theme);
+            }
+        }
+    }
+}
+
+ion-footer {
+    ion-item {
+        --background: var(--gradiant);
+        --background-activated: var(--gradiant);
+        --color: var(--ion-color-white);
+        --color-activated: var(--ion-color-white);
+        --detail-icon-opacity: 1;
+        --detail-icon-font-size: 16px;
+        ion-label {
+            font-family: 'Tofino_regular';
+            font-size: 14px;
+            small {
+                position: relative;
+                top: -4px;
+                color: #fff;
+            }
+        }
+        h4 {
+            margin-top: 10px;
+            margin-right: 14px;
+            font-size: 18px;
+            font-family: 'Tofino_Regular';
+        }
+    }
+}

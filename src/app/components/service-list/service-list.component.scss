@@ -1,0 +1,63 @@
+.serviceList {
+    .cetegoryTitle {
+        h2 {
+            font-size: 16px;
+            color: var(--ion-color-gray-shade);
+            margin: 5px 20px 0px;
+            font-family: 'tofini_bold';
+        }
+    }
+    .flexBox {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        padding: 12px 18px;
+        background: var(--gray);
+        margin: 9px;
+        border-radius: 8px;
+        img {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 11px;
+        }
+        .info {
+            width: 100%;
+            &.selected {
+                font-size: 16px;
+                background: var(--gradiant);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .service-info {
+                display: flex;
+                justify-content: space-between;
+                flex: 1;
+                align-items: center;
+                .part-1 {
+                    h2 {
+                        margin: 0;
+                        font-size: 16px;
+                        font-family: 'tofini_bold';
+                        &:last-child {
+                            font-family: 'tofini_regular';
+                            margin-top: -3px;
+                        }
+                    }
+                }
+                .service-price {
+                    margin: 0;
+                    font-size: 20px;
+                    font-family: 'tofini_bold';
+                }
+            }
+            p {
+                margin: 0;
+                font-size: 11px;
+                margin-top: 3px;
+                font-family: 'tofini_regular';
+            }
+        }
+    }
+}

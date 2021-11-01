@@ -1,0 +1,42 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home" icon="ios-arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Contact Us</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item lines="none">
+        <ion-label>
+            <h6>Call us</h6>
+            <p>{{about?.callUs}}</p>
+        </ion-label>
+        <div class="info-icon-div" slot="end">
+            <ion-icon name="md-call"></ion-icon>
+        </div>
+    </ion-item>
+    <ion-item lines="none" class="center-item">
+        <ion-label>
+            <h6>Email us</h6>
+            <p>{{about?.emailUs}}</p>
+        </ion-label>
+        <div class="info-icon-div" slot="end">
+            <ion-icon name="md-mail"></ion-icon>
+        </div>
+    </ion-item>
+    <ion-item lines="none">
+        <ion-label>
+            <h6>Reach us</h6>
+            <p><b>AZ Car Wash Tower</b></p>
+            <p>{{about?.Address}}</p>
+        </ion-label>
+        <div class="info-icon-div" slot="end">
+            <ion-icon name="ios-paper-plane"></ion-icon>
+        </div>
+    </ion-item>
+
+    <div #map id="map" class="mapStyle"></div>
+
+</ion-content>

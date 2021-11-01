@@ -1,0 +1,90 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="ios-arrow-back" defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Add Address</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="iconContainer">
+        <h2 class="title gradient-text">Click on icons to add car park address</h2>
+        <div class="scrollContainer">
+            <div class="scrollItem">
+                <div [ngClass]="{'activeAddress': addressType == 'Home'}" (click)="onAddressTypeSelect('Home')" class="addressSelector">
+                    <img src="https://images.vexels.com/media/users/3/157343/isolated/preview/fa058a304813b6d204d29253f5cb90d4-flat-home-house-icon-by-vexels.png">
+                    <h2>Home</h2>
+                </div>
+                <ion-icon *ngIf="addressType == 'Home'" name="md-arrow-dropup"></ion-icon>
+            </div>
+
+            <div class="scrollItem">
+                <div [ngClass]="{'activeAddress': addressType == 'Office'}" (click)="onAddressTypeSelect('Office')" class="addressSelector">
+                    <img src="https://cdn0.iconfinder.com/data/icons/market-and-economics-19/48/56-512.png">
+                    <h2>Office</h2>
+                </div>
+                <ion-icon *ngIf="addressType == 'Office'" name="md-arrow-dropup"></ion-icon>
+            </div>
+
+            <div class="scrollItem">
+                <div [ngClass]="{'activeAddress': addressType == 'Other'}" (click)="onAddressTypeSelect('Other')" class="addressSelector">
+                    <img src="https://cdn0.iconfinder.com/data/icons/market-and-economics-19/48/56-512.png">
+                    <h2>Other</h2>
+                </div>
+                <ion-icon *ngIf="addressType == 'Other'" name="md-arrow-dropup"></ion-icon>
+            </div>
+        </div>
+    </div>
+
+    <div class="inputContainer">
+        <h2 class="title gradient-text">Enter Address Details</h2>
+        <form [formGroup]="addressForm">
+
+            <ng-select formControlName="condo" placeholder="Search For Condominium" [searchable]="true" [clearable]="false" bindLabel="name" bindValue="id" [items]="condo">
+                <ng-template ng-label-tmp let-item="item">
+                    <span>{{item.name}}</span>
+                </ng-template>
+                <ng-template ng-option-tmp let-item="item" let-index="index">
+                    <span>{{item.name}}</span>
+                </ng-template>
+            </ng-select>
+
+            <p class="err" *ngIf="addressForm.controls.condo.hasError('required') && addressForm.controls.condo.touched">
+                Condo is required!
+            </p>
+
+            <!-- <ion-item>
+                <ion-label position="floating">Landmark, Postcode etc.</ion-label>
+                <ion-input formControlName=""></ion-input>
+            </ion-item>
+            <p class="err" *ngIf="addressForm.controls..hasError('required') && addressForm.controls..touched">
+                Landmark, Postcode etc.. is required!
+            </p> -->
+
+            <div class="flexBox">
+                <ion-item class="left">
+                    <ion-label position="floating">Car Park Level</ion-label>
+                    <ion-input formControlName="parkingLvl"></ion-input>
+                </ion-item>
+
+                <ion-item class="right">
+                    <ion-label position="floating">Parking Lot</ion-label>
+                    <ion-input formControlName="lot"></ion-input>
+                </ion-item>
+
+            </div>
+            <p class="err" *ngIf="addressForm.controls.parkingLvl.hasError('required') && addressForm.controls.parkingLvl.touched">
+                Car Park Level is required!
+            </p>
+            <p class="err" *ngIf="addressForm.controls.lot.hasError('required') && addressForm.controls.lot.touched">
+                Lot is required!
+            </p>
+
+            <ion-button (click)="onAddressAdd()" [disabled]="!addressForm.valid" class="btn-style" shape="round">Save Address</ion-button>
+
+        </form>
+    </div>
+
+</ion-content>

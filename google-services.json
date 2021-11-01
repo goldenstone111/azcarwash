@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "792369440798",
+    "firebase_url": "https://az-carwash.firebaseio.com",
+    "project_id": "az-carwash",
+    "storage_bucket": "az-carwash.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792369440798:android:602103205f2334ca5d260f",
+        "android_client_info": {
+          "package_name": "com.azcarwash.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792369440798-7rap87npr970ofegalv0fliih2aem3bt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDJCtFzhdm0t5O4i2sa300-I7i66vEHXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792369440798-7rap87npr970ofegalv0fliih2aem3bt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792369440798:android:f3b34879279e1c515d260f",
+        "android_client_info": {
+          "package_name": "com.azcarwash.workforce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792369440798-7rap87npr970ofegalv0fliih2aem3bt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDJCtFzhdm0t5O4i2sa300-I7i66vEHXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792369440798-7rap87npr970ofegalv0fliih2aem3bt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

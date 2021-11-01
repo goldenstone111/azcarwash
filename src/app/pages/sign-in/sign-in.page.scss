@@ -1,0 +1,48 @@
+ion-content {
+    .az-logo {
+        margin: auto;
+        display: block;
+        margin-top: 33px;
+    }
+    .container {
+        padding: 26px;
+    }
+    ion-input,
+    ion-item {
+        --padding-start: 0px;
+        margin-bottom: 10px;
+        &:first-child {
+            margin-bottom: 16px !important;
+        }
+        ion-label {
+            font-size: 19px;
+            color: #898891;
+            font-family: "tofini_medium";
+        }
+        ion-input {
+            --padding-start: 0px;
+            margin: 10px 0px 0px 0px;
+            font-size: 15px;
+            font-family: 'tofini_regular';
+        }
+    }
+    .forgotContainer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 5px;
+        span {
+            font-family: 'tofini_medium';
+            font-size: 14px;
+        }
+    }
+    .btn-style {
+        text-transform: capitalize;
+        &:last-child {
+            margin-top: 8px;
+        }
+    }
+}
+
+ion-button {
+    text-transform: capitalize;
+}

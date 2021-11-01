@@ -1,0 +1,55 @@
+ion-header {
+    ion-toolbar {
+        ion-back-button {
+            --color: var(--ion-color-theme);
+        }
+        ion-title {
+            font-size: 21px;
+            font-family: 'Tofino_Medium';
+            color: var(--ion-color-black);
+            padding-inline-start: 0px;
+        }
+    }
+}
+
+ion-content {
+    .faq-list {
+        .question-section {
+            .question {
+                font-size: 13px;
+                font-family: 'Tofino_Regular';
+                line-height: 18px;
+                display: flex;
+                background: var(--gradiant);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 5px;
+                ion-button {
+                    --padding-start: 0em;
+                    --padding-end: 0em;
+                    --ripple-color: transparent;
+                    --color: var(--ion-color-darkGray);
+                    --color-activated: var(--ion-color-darkGray);
+                    margin: auto 0px;
+                    height: auto;
+                    float: right;
+                    font-size: 16px;
+                }
+            }
+            .border-bottom {
+                border-bottom: 1px solid var(--ion-color-darkGray);
+                padding-bottom: 6px;
+            }
+            .answer-div {
+                border-bottom: 1px solid var(--ion-color-darkGray);
+                .description {
+                    font-size: 13px;
+                    font-family: 'Tofino_Regular';
+                    color: var(--ion-color-darkGray);
+                    line-height: 18px;
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+}

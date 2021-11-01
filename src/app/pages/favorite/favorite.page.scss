@@ -1,0 +1,106 @@
+ion-header {
+    ion-toolbar {
+        ion-back-button {
+            --color: var(--ion-color-theme);
+        }
+        ion-title {
+            font-size: 21px;
+            font-family: 'Tofino_Medium';
+            color: var(--ion-color-black);
+            padding-inline-start: 0px;
+        }
+    }
+}
+
+ion-content {
+    --background: var(--gray);
+    ion-card {
+        box-shadow: none;
+        border-radius: 6px;
+        position: relative;
+        .start-ribin {
+            width: 40px;
+            position: absolute;
+            height: 18px;
+            top: 0;
+            right: 11px;
+            z-index: 1;
+            background: var(--ion-color-theme);
+            color: var(--ion-color-white);
+            font-size: 11px;
+            padding: 4px 5px 2px;
+            font-family: Tofino_Regular;
+        }
+        .start-ribin:after {
+            content: "";
+            position: relative;
+            z-index: -1;
+            border-left: 20px solid var(--ion-color-theme);
+            border-right: 20px solid var(--ion-color-theme);
+            border-bottom: 4px solid #0000;
+            right: 33px;
+            top: 4px;
+        }
+        ion-item {
+            ion-avatar {
+                height: 45px;
+                width: 45px;
+            }
+            .call-icon-div {
+                background: var(--gray);
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+                text-align: center;
+                padding-top: 6px;
+                margin-right: 22px;
+                margin-left: 8px;
+            }
+            .label-margin-top {
+                margin-top: 16px;
+            }
+            .padding-right-45 {
+                padding-right: 45px;
+                white-space: initial;
+            }
+            ion-label {
+                .service-name {
+                    font-size: 15px;
+                    font-family: 'Tofino_Regular';
+                }
+                .small-text {
+                    font-size: 12px;
+                    font-family: 'Tofino_Regular';
+                    color: var(--ion-color-black);
+                    white-space: initial;
+                    line-height: 16px;
+                }
+            }
+            .fav-icon-div {
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+                background: var(--gradiant);
+                text-align: center;
+                padding-top: 7px;
+                color: var(--ion-color-white);
+                margin-right: 11px;
+                ion-icon {
+                    font-size: 18px;
+                }
+            }
+            ion-button {
+                --background: var(--ion-color-light-Gray);
+                --background-activated: var(--ion-color-light-Gray);
+                --padding-top: 2px;
+                --padding-bottom: 1;
+                --padding-start: 1.6em;
+                --padding-end: 1.6em;
+                --box-shadow: none;
+                height: 31px;
+                font-size: 11px;
+                font-family: 'Tofino_Regular';
+            }
+        }
+    }
+}

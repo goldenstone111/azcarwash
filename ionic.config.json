@@ -1,0 +1,7 @@
+{
+  "name": "AZ-Carwash",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

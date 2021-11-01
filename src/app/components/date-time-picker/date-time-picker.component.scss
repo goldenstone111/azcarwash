@@ -1,0 +1,80 @@
+.container {
+    background: var(--gray);
+    .title {
+        margin: 0;
+        font-size: 17px;
+        margin-bottom: 15px;
+        color: var(--ion-color-gray-shade);
+        text-align: center;
+    }
+    .scrollContainer {
+        display: flex;
+        overflow: scroll;
+        .cal {
+            margin: 6px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            h2 {
+                font-size: 16px;
+                margin: 7px 0px;
+                &:last-child {
+                    font-size: 13px;
+                }
+            }
+            .date {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: var(--gray);
+                &.selectedDate {
+                    background: var(--gradiant);
+                    h2 {
+                        color: #fff !important;
+                    }
+                }
+                h2 {
+                    color: gray;
+                    font-size: 20px;
+                    font-family: 'tofini_medium';
+                }
+            }
+        }
+        .time-container {
+            margin: 6px 16px;
+            .time {
+                width: 93px;
+                height: 40px;
+                border-radius: 25px;
+                display: flex;
+                -webkit-box-pack: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                align-items: center;
+                &.selectedTime {
+                    background: var(--gradiant);
+                    h2 {
+                        color: white;
+                    }
+                }
+                h2 {
+                    margin: 0;
+                    color: gray;
+                    font-size: 17px;
+                    font-family: 'tofini_medium';
+                }
+            }
+            .am-pm {
+                margin: 0;
+                text-align: center;
+                font-size: 15px;
+                font-family: 'tofini_medium';
+                color: gray
+            }
+        }
+    }
+}

@@ -1,0 +1,73 @@
+<ion-header no-border="no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="ios-arrow-back" defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Add car</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <div class="imgPlaceholder">
+        <div *ngIf="!imagecheck" (click)="presentActionSheet()" class="cameraIcon">
+            <ion-icon name="md-camera"></ion-icon>
+        </div>
+        <img class="carImg" *ngIf="imagecheck" [src]="imgUrl"></div>
+
+    <form name="form" [formGroup]="carForm">
+        <ion-text>Select Car Brand</ion-text>
+        <ng-select (change)="getItems()" formControlName="Brand" class="country-codeSelect" [searchable]="true" [clearable]="false" [items]="brands" bindLabel="name" bindValue="name">
+            <ng-template ng-label-tmp="ng-label-tmp" let-item="item">
+                <img height="15" width="22" *ngIf="item?.image" src="{{item?.image ? item?.image : 'https://cdn.onlinewebfonts.com/svg/img_148071.png'}}" style="margin-right: 8px;margin-bottom: -2px" />
+                <span>{{item.name}}</span>
+            </ng-template>
+            <ng-template ng-option-tmp="ng-option-tmp" let-item="item" let-index="index">
+                <img height="15" width="22" src="{{item?.image ? item?.image : 'https://cdn.onlinewebfonts.com/svg/img_148071.png'}}" style="margin-right: 8px;margin-bottom: -2px" />
+                <span>{{item.name}}</span>
+            </ng-template>
+        </ng-select>
+
+        <p class="err" *ngIf="carForm.controls.Brand.hasError('required') && carForm.controls.Brand.touched">
+            Car Brand is required!
+        </p>
+
+        <ion-item>
+            <ion-label position="floating">Select Car Model</ion-label>
+            <ion-select formControlName="Model" (ionChange)="getCarSize()">
+                <ion-select-option *ngFor="let i of models | orderBy: order : false : true" [value]="i?.name">
+                    {{i?.name}}
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <p class="err" *ngIf="carForm.controls.Model.hasError('required') && carForm.controls.Model.touched">
+            Car Model is required!
+        </p>
+
+        <ion-item>
+            <ion-label position="floating">Select Car Type</ion-label>
+            <ion-select formControlName="Type" style="pointer-events: none;text-transform: capitalize;">
+                <ion-select-option *ngFor="let i of size" [value]="i?.value">
+                    {{i?.value}}
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <p class="err" *ngIf="carForm.controls.Type.hasError('required') && carForm.controls.Type.touched">
+            Car Type is required!
+        </p>
+
+        <ion-item>
+            <ion-label position="floating">Add Car Plate Number</ion-label>
+            <ion-input formControlName="Number"></ion-input>
+        </ion-item>
+
+        <p class="err" *ngIf="carForm.controls.Number.hasError('required') && carForm.controls.Number.touched">
+            Car Number is required!
+        </p>
+
+        <ion-button (click)="onAddCar()" [disabled]="!carForm.valid || onCarAdd" class="btn-style" shape="round">Save Car Info</ion-button>
+    </form>
+
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-content>
+
+    <img class="az-logo" src="assets/imgs/Capture.PNG">
+
+    <div class="container">
+        <ion-item>
+            <ion-label position="stacked">Email address</ion-label>
+            <ion-input type="email" [(ngModel)]="credentials.email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Password</ion-label>
+            <ion-input type="password" [(ngModel)]="credentials.password"></ion-input>
+        </ion-item>
+
+        <div class="forgotContainer">
+            <ion-button (click)="goForgot()" fill="clear" class="clearBtn" shape="round">
+                <span class="gradient-text"> Forgot Password? </span>
+            </ion-button>
+        </div>
+
+        <ion-button [disabled]="(!credentials.email || !credentials.password)" (click)="onLogin()" class="btn-style" shape="round">
+            Login
+        </ion-button>
+
+        <ion-button (click)="goSignUp()" class="btn-style btn-style-2" shape="round">
+            <span class="gradient-text">  
+                Create New Account
+            </span>
+        </ion-button>
+
+    </div>
+
+</ion-content>

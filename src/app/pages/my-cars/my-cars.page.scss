@@ -1,0 +1,81 @@
+ion-header {
+  ion-toolbar {
+    ion-back-button {
+      --color: var(--ion-color-theme);
+    }
+    ion-title {
+      font-size: 21px;
+      font-family: 'Tofino_Medium';
+      color: var(--ion-color-black);
+      padding-inline-start: 0px;
+    }
+  }
+}
+ion-content {
+  .car-card {
+    margin: 10px 13px;
+    position: relative;
+    img {
+      border-radius: 7px;
+      width: 100%;
+      height: 13rem;
+    }
+    .car-detail {
+      position: absolute;
+      bottom: 4px;
+      left: 0px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0px -2px 8px 4px rgba(255, 255, 255, 0.7);
+      padding: 0px 16px;
+      .car-name {
+        font-size: 18px;
+        font-family: 'Tofino_Medium';
+        color: var(--ion-color-theme);
+        display: flex;
+        align-items: baseline;
+        .small-label {
+          font-size: 13px;
+          color: var(--ion-color-light-Gray);
+        }
+        .dot {
+          width: 5px;
+          height: 5px;
+          background: var(--gradiant);
+          border-radius: 50%;
+          margin: -5px 15px 0px;
+        }
+      }
+      .no-label {
+        margin-top: 0px;
+        margin-bottom: 14px;
+        font-size: 12px;
+        font-family: 'Tofino_Regular';
+        color: var(--ion-color-light-Gray);
+      }
+      ion-button {
+        height: auto;
+        margin: 0px;
+        width: auto;
+        float: right;
+        --padding-start: 0em;
+        --padding-end: 0em;
+        font-size: 21px;
+        position: absolute;
+        right: 8px;
+        bottom: 23px;
+        --color: var(--ion-color-white);
+        --color-activated: var(--ion-color-white);
+      }
+    }
+  }
+  ion-fab {
+    ion-fab-button {
+      --background: var(--gradiant);
+      --background-activated: var(--gradiant);
+      ion-icon {
+        font-size: 34px;
+      }
+    }
+  }
+}

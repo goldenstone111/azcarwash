@@ -1,0 +1,50 @@
+ion-header {
+    ion-toolbar {
+        ion-back-button {
+            --color: var(--ion-color-theme);
+        }
+        ion-title {
+            font-size: 21px;
+            font-family: 'Tofino_Medium';
+            color: var(--ion-color-black);
+            padding-inline-start: 0px;
+        }
+    }
+}
+
+ion-content {
+    ion-item {
+        .title {
+            font-size: 15px;
+            font-family: 'tofini_bold';
+        }
+        .address-text {
+            font-size: 15px;
+            font-family: 'tofini_regular';
+            color: var(--ion-color-darkGray);
+            white-space: normal;
+        }
+        ion-checkbox {
+            margin-right: 0px;
+        }
+    }
+    ion-button {
+        margin: 16px;
+    }
+    .item-interactive-disabled.sc-ion-label-md-h:not(.item-multiple-inputs),
+    .item-interactive-disabled:not(.item-multiple-inputs) .sc-ion-label-md-h {
+        opacity: 1 !important;
+    }
+    .checkbox-disabled {
+        opacity: 1 !important;
+    }
+    ion-fab {
+        ion-fab-button {
+            --background: var(--gradiant);
+            --background-activated: var(--gradiant);
+            ion-icon {
+                font-size: 34px;
+            }
+        }
+    }
+}

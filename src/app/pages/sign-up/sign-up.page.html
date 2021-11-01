@@ -1,0 +1,60 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="ios-arrow-back" defaultHref="signIn"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Sign Up</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="imageContainer">
+        <img class="imgStyle" [src]="imagecheck ? imgUrl : 'https://cdn1.iconfinder.com/data/icons/mix-color-4/502/Untitled-1-512.png'">
+        <ion-button (click)="openGallary()" fill="clear" class="clearBtn">
+            <ion-icon name="md-camera"></ion-icon>
+        </ion-button>
+    </div>
+
+    <div class="container">
+        <form [formGroup]="myForm">
+            <ion-item>
+                <ion-label position="stacked">User Name</ion-label>
+                <ion-input type="text" formControlName="username"></ion-input>
+            </ion-item>
+            <p class="err" *ngIf="myForm.controls.username.hasError('required') && myForm.controls.username.touched">
+                Username is required!
+            </p>
+
+            <ion-item>
+                <ion-label position="stacked">Email address</ion-label>
+                <ion-input type="text" formControlName="email"></ion-input>
+            </ion-item>
+            <p class="err" *ngIf="myForm.controls.email.hasError('required') && myForm.controls.email.touched">
+                Email is required!
+            </p>
+            <p class="err" *ngIf="myForm.controls.email.hasError('email') && myForm.controls.email.touched && !myForm.controls.email.hasError('required')" color="danger">
+                Email is invalid!
+            </p>
+
+            <ion-item>
+                <ion-label position="stacked">Password</ion-label>
+                <ion-input type="password" formControlName="password"></ion-input>
+            </ion-item>
+            <p class="err" *ngIf="myForm.controls.password.hasError('required') && myForm.controls.password.touched">
+                Password is required!
+            </p>
+
+            <ion-item>
+                <ion-label position="stacked">Phone Number</ion-label>
+                <ion-input type="tel" formControlName="number"></ion-input>
+            </ion-item>
+            <p class="err" *ngIf="myForm.controls.number.hasError('required') && myForm.controls.number.touched">
+                Number is required!
+            </p>
+
+            <ion-button (click)="OnSignUp()" [disabled]="!myForm.valid" class="btn-style" shape="round">SIGN UP</ion-button>
+        </form>
+    </div>
+
+</ion-content>

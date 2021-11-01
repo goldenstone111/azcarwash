@@ -1,0 +1,57 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home" icon="ios-arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>My Address</ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="add-btn" fill="clear" (click)="goToAddAddress()">
+                <ion-icon name="add"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="noDataFullScreen" *ngIf="addressList?.length == 0">
+        <h2>No data found</h2>
+    </div>
+
+    <ion-item-sliding *ngFor="let address of addressList">
+        <ion-item-options side="end">
+            <ion-item-option (click)="onEdit(address)">Edit</ion-item-option>
+            <ion-item-option (click)="onDelete(address)" color="danger">Delete</ion-item-option>
+        </ion-item-options>
+
+        <ion-item (click)="setAddress(address)">
+            <ion-label>
+                <h2 class="title">{{ address?.title }}</h2>
+                <!-- <p class="address-text">
+                    Location: {{ address?. }}
+                </p> -->
+                <p class="address-text">
+                    Condo: {{ address?.condoName }}
+                </p>
+                <p class="address-text">
+                    Parking Level: {{ address?.parkingLvl }}
+                </p>
+                <p class="address-text">
+                    Parking Lot: {{ address?.lot }}
+                </p>
+            </ion-label>
+            <ion-checkbox custom-chckbox slot="end" mode="ios" [checked]="address.default"></ion-checkbox>
+        </ion-item>
+    </ion-item-sliding>
+
+
+    <ion-button *ngIf="addressList?.length != 0" fill-button class="ion-text-capitalize" mode="md" expand="block" fill="solid" (click)="goNext()">
+        Set Address
+    </ion-button>
+
+    <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="goToAddAddress()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab> -->
+</ion-content>

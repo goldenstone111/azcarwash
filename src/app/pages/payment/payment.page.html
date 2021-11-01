@@ -1,0 +1,47 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="home"
+        icon="ios-arrow-back"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3 class="select-title">Select Payment Method</h3>
+  <ion-list>
+    <ion-radio-group (ionChange)="chnagePaymentMethod($event)">
+      <ion-item lines="none">
+        <ion-label>Online Banking</ion-label>
+        <ion-radio slot="start" value="senangpay" checked mode="md"></ion-radio>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Credit/Debit Card</ion-label>
+        <ion-radio slot="start" value="SENSANG" mode="md"></ion-radio>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>E-Wallet (TnG/Boost)</ion-label>
+        <ion-radio slot="start" value="senangpay2" mode="md"></ion-radio>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Cash on Detailing ( Temporary Not Available Due To Pandemic )</ion-label>
+        <ion-radio slot="start" disabled value="OFFLINE" mode="md"></ion-radio>
+      </ion-item>
+      <!-- <ion-item lines="none">
+        <ion-label>senangPay</ion-label>
+        <ion-radio slot="start" value="senangpay" mode="md"></ion-radio>
+      </ion-item> -->
+    </ion-radio-group>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-item (click)="payNow()" button="true" detail="true" lines="none">
+    <ion-label
+      >Amount Payable <small class="rm">RM</small>{{bookings.total}}</ion-label
+    >
+    <h4 slot="end">Pay Now</h4>
+  </ion-item>
+</ion-footer>

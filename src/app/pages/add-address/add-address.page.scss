@@ -1,0 +1,111 @@
+ion-header {
+    ion-toolbar {
+        --background: #e8e8e8;
+        ion-back-button {
+            --padding-end: 0;
+            --padding-start: 0;
+            margin-left: 7px;
+            color: var( --ion-color-theme);
+            min-width: 31px !important;
+        }
+        ion-title {
+            padding-left: 7px;
+            font-size: 21px;
+            font-family: "tofini_bold";
+            margin-top: 3px;
+        }
+    }
+}
+
+ion-content {
+    .title {
+        padding: 14px 1px 2px;
+        margin: 0;
+        font-family: "tofini_bold";
+    }
+    .iconContainer {
+        padding: 9px 22px 0px;
+        background: #f1f1f1;
+        position: relative;
+        .scrollContainer {
+            display: -webkit-box;
+            overflow: scroll;
+            margin-top: 15px;
+            .scrollItem {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-right: 14px;
+                .addressSelector {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    height: 109px;
+                    width: 127px;
+                    background: #cfcfcf;
+                    border-radius: 9px;
+                    &.activeAddress {
+                        background: var(--gradiant) !important;
+                    }
+                    img {
+                        height: 70px;
+                        width: 70px;
+                    }
+                    h2 {
+                        margin: 3px 0;
+                        font-size: 14px;
+                        color: var(--ion-color-white);
+                        font-family: sans-serif;
+                    }
+                }
+                ion-icon {
+                    font-size: 30px;
+                    margin-bottom: -10px;
+                }
+            }
+        }
+    }
+    .inputContainer {
+        padding: 9px 22px 0px;
+        position: relative;
+        form {
+            margin-top: 13px;
+            ion-item {
+                --padding-start: 0px;
+                margin-bottom: 11px;
+                ion-label {
+                    font-size: 17px;
+                    color: #898891;
+                    font-family: "tofini_medium";
+                }
+                ion-input,
+                ion-select {
+                    --padding-start: 0px;
+                    --padding-bottom: 1px;
+                    --padding-top: 12px;
+                    margin: 2px 0px;
+                    font-size: 15px;
+                    font-family: "tofini_bold";
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+            .flexBox {
+                display: flex;
+                ion-item {
+                    &:first-child {
+                        margin-right: 7px;
+                    }
+                    &:last-child {
+                        margin-left: 7px;
+                    }
+                }
+            }
+            .btn-style {
+                text-transform: capitalize;
+            }
+        }
+    }
+}

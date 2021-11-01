@@ -1,0 +1,454 @@
+ion-header {
+    ion-toolbar {
+        --background: transparent;
+        --ion-color-base: transparent !important;
+        transform-style: flat;
+        transition: background-color 0.5s ease-in 0.5s;
+        ion-buttons {
+            .menu-button {
+                height: 45px;
+                width: 68px;
+                background: var(--ion-color-white);
+                position: absolute;
+                left: -4px;
+                border-radius: 0px 23px 23px 0px;
+                font-size: 28px;
+                padding: 8px 17px;
+            }
+            ion-back-button {
+                color: var(--ion-color-theme);
+            }
+            .btn-fav {
+                --color: var(--ion-color-theme);
+                --color-activated: var(--ion-color-theme);
+            }
+            ion-button {
+                --color: var(--ion-color-light-Gray);
+                --color-activated: var(--ion-color-light-Gray);
+                --ripple-color: transparent;
+                --padding-start: 13px;
+                --padding-end: 13px;
+            }
+        }
+    }
+    .cover-image {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        img {
+            height: 200px;
+            width: 100%;
+        }
+    }
+    .shop-detail {
+        margin-top: 100px;
+        padding: 0px 16px 10px 16px;
+        position: relative;
+        background: #e7e7e7;
+        .start-ribin {
+            width: 44px;
+            float: right;
+            text-align: center;
+            background: #0377cb;
+            color: var(--ion-color-white);
+            font-size: 13px;
+            padding: 4px 2px 0px;
+            font-family: 'Tofino_Regular';
+            position: absolute;
+            right: 8px;
+            z-index: 5555;
+            top: 0px;
+        }
+        .start-ribin:after {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            border-left: 22px solid #0377cb;
+            border-right: 22px solid #0377cb;
+            border-bottom: 4px solid #0000;
+            right: 0px;
+            top: 18px;
+            height: 31%;
+        }
+        .shop-name {
+            font-family: 'Tofino_Bold';
+            font-size: 20px;
+            font-weight: normal;
+            margin-bottom: 0px;
+            padding-top: 20px;
+        }
+        .shop-address {
+            font-family: 'Tofino_Regular';
+            margin: 7px 0px;
+            font-size: 13px;
+        }
+    }
+    .segment-section {
+        display: flex;
+        background: #f4f4f4;
+        padding-top: 13px;
+        overflow-x: scroll;
+        .segment-btn {
+            min-width: 100px;
+            text-align: center;
+            p {
+                margin: 5px 0px 0px;
+                font-family: 'Tofino_Regular';
+                font-size: 17px;
+            }
+            .line {
+                width: 35px;
+                background: transparent;
+                height: 3px;
+                text-align: center;
+                margin: 8px auto 0px;
+                border-radius: 25px;
+                background: #f4f4f4;
+            }
+        }
+        .active {
+            p {
+                font-family: 'Tofino_Medium';
+                margin-top: 0px;
+                background: var(--gradiant);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .line {
+                background: var(--gradiant);
+            }
+        }
+    }
+    .segment-section::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+ion-content {
+    .service-list {
+        .service-sub-title {
+            color: #7f7f7f;
+            margin: 0px;
+            .btn-infor {
+                --color: var(--ion-color-darkGray);
+                --color-activated: var(--ion-color-darkGray);
+                --padding-start: 0px;
+                --padding-end: 0px;
+                height: auto;
+                float: right;
+                font-size: 16px;
+            }
+        }
+        ion-list {
+            padding-top: 0px;
+            padding-bottom: 0px;
+            width: 100% !important;
+            ion-item {
+                --padding-start: 0px;
+                --inner-padding-end: 0px;
+                ion-avatar {
+                    width: 50px;
+                    height: 50px;
+                }
+                ion-label {
+                    h3 {
+                        font-size: 15px;
+                        font-family: 'Tofino_Medium';
+                        padding-right: 90px;
+                        position: relative;
+                        white-space: normal;
+                        .radio-section {
+                            display: flex;
+                            position: absolute;
+                            top: 0px;
+                            right: 0px;
+                            .label-text {
+                                width: fit-content;
+                                margin-right: 16px;
+                                display: flex;
+                                font-family: 'Tofino_Bold';
+                            }
+                            input[type='checkbox'] {
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                appearance: none;
+                                display: inline-block;
+                                width: 20px;
+                                height: 20px;
+                                padding: 1px;
+                                background-clip: content-box;
+                                border: 2px solid #bbb;
+                                border-radius: 50%;
+                            }
+                            input[type='checkbox']:checked {
+                                background-image: url('../../../assets/imgs/Icon-awesome-check.svg');
+                                border-color: var(--ion-color-theme);
+                                background-size: 12px;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                            }
+                        }
+                    }
+                    p {
+                        font-size: 11px;
+                        margin-bottom: 0px;
+                        font-family: 'Tofino_regular';
+                        white-space: normal;
+                        line-height: 15px;
+                    }
+                }
+            }
+        }
+    }
+    .package-list {
+        .package-section {
+            position: relative;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+            margin-bottom: 16px;
+            .package-title {
+                font-size: 15px;
+                font-family: 'Tofino_Medium';
+                margin-top: 0px;
+                .btn-infor {
+                    --color: var(--ion-color-darkGray);
+                    --color-activated: var(--ion-color-darkGray);
+                    --padding-start: 0px;
+                    --padding-end: 0px;
+                    height: auto;
+                    float: right;
+                    font-size: 16px;
+                }
+            }
+            .price {
+                float: right;
+                font-size: 15px;
+                font-family: 'Tofino_Medium';
+                margin-top: 0px;
+                display: flex;
+                font-family: "Tofino_Bold";
+                small {
+                    position: relative;
+                    top: -3px;
+                }
+            }
+            .service-item {
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+                font-family: 'Tofino_Regular';
+                margin-bottom: 5px;
+                .service-image {
+                    height: 25px;
+                    width: 25px;
+                    border-radius: 50%;
+                    margin-right: 16px;
+                }
+            }
+            p {
+                font-size: 11px;
+                margin-bottom: 0px;
+                margin-top: 3px;
+                font-family: 'Tofino_regular';
+                white-space: normal;
+                line-height: 15px;
+                color: var(--ion-color-light-Gray);
+            }
+        }
+    }
+    .about-list {
+        h5 {
+            font-size: 15px;
+            font-family: 'Tofino_Medium';
+            &:first-child {
+                margin-top: 8px;
+            }
+            .time-label {
+                color: var(--ion-color-blue);
+                font-family: 'Tofino_Regular';
+            }
+            .btn-direction {
+                height: 20px;
+                font-size: 14px;
+                font-family: 'Tofino_Regular';
+                margin: 0px;
+                --color: var(--ion-color-blue);
+                --color-activated: var(--ion-color-blue);
+                --ripple-color: transparent;
+            }
+        }
+        .description {
+            font-family: 'Tofino_Regular';
+            font-size: 13px;
+            line-height: 20px;
+        }
+        .margin-top {
+            margin-top: 30px;
+        }
+    }
+    .review-list {
+        .review-info-row {
+            padding: 8px 11px;
+            background: var(--gray);
+            .total-star-col {
+                display: flex;
+                font-size: 12px;
+                font-family: 'Tofino_Medium';
+                align-items: baseline;
+                .start_label {
+                    width: fit-content;
+                    background: var(--gradiant);
+                    color: var(--ion-color-white);
+                    padding: 4px 8px;
+                    font-size: 13px;
+                    font-family: 'Tofino_Regular';
+                    border-radius: 13px;
+                    margin-right: 10px;
+                    ion-icon {
+                        margin-bottom: -1px;
+                    }
+                }
+            }
+            .select-col {
+                ion-select {
+                    --padding-top: 4px;
+                    --padding-bottom: 4px;
+                    font-size: 12px;
+                    font-family: 'Tofino_Medium';
+                    // color: var(--ion-color-theme);
+                    background: var(--gradiant);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+            }
+        }
+        .review_card {
+            border-bottom: 1px solid var(--gray);
+            ion-item {
+                margin-top: 13px;
+                ion-avatar {
+                    width: 50px;
+                    height: 50px;
+                }
+                ion-label {
+                    h3 {
+                        font-size: 15px;
+                        font-family: 'Tofino_Medium';
+                        padding-right: 75px;
+                        position: relative;
+                        white-space: normal;
+                        .rating-bar {
+                            width: fit-content;
+                            position: absolute;
+                            right: 0px;
+                            top: 0px;
+                            ion-icon {
+                                font-size: 13px;
+                                margin-right: 2px;
+                                color: var(--ion-color-light-Gray);
+                            }
+                            .active {
+                                color: var(--ion-color-golden);
+                            }
+                        }
+                    }
+                    p {
+                        line-height: 18px;
+                        font-family: 'Tofino_Regular';
+                    }
+                }
+            }
+            .description {
+                font-size: 13px;
+                font-family: 'Tofino_Regular';
+                margin: 5px 16px 16px;
+                color: var(--ion-color-light-Gray);
+                line-height: 18px;
+            }
+        }
+    }
+    .faq-list {
+        .question-section {
+            .question {
+                font-size: 13px;
+                font-family: 'Tofino_Regular';
+                line-height: 18px;
+                display: flex;
+                background: var(--gradiant);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 5px;
+                ion-button {
+                    --padding-start: 0em;
+                    --padding-end: 0em;
+                    --ripple-color: transparent;
+                    --color: var(--ion-color-darkGray);
+                    --color-activated: var(--ion-color-darkGray);
+                    margin: auto 0px;
+                    height: auto;
+                    float: right;
+                    font-size: 16px;
+                }
+            }
+            .border-bottom {
+                border-bottom: 1px solid var(--ion-color-darkGray);
+                padding-bottom: 6px;
+            }
+            .answer-div {
+                border-bottom: 1px solid var(--ion-color-darkGray);
+                .description {
+                    font-size: 13px;
+                    font-family: 'Tofino_Regular';
+                    color: var(--ion-color-darkGray);
+                    line-height: 18px;
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+}
+
+ion-footer {
+    background: var(--gradiant);
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    p {
+        color: var(--ion-color-white);
+        font-family: 'Tofino_Regular';
+        margin-left: 16px;
+        margin-block-start: 1.2em;
+        small {
+            position: relative;
+            top: -4px;
+            color: #fff !important;
+        }
+    }
+    ion-button {
+        margin-right: 12px;
+        font-family: 'Tofino_Medium';
+        --border-radius: 22px;
+        --background: var(--ion-color-white);
+        --background-activated: var(--ion-color-white);
+        --color: var(--ion-color-black);
+        --color-activated: var(--ion-color-black);
+        --padding-start: 3em;
+        --padding-end: 3em;
+    }
+}
+
+.mapStyle {
+    position: relative;
+    width: 100%;
+    height: 62%
+}
+
+.gmnoprint {
+    display: none;
+}
+
+.gm-control-active {
+    display: none;
+}

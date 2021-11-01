@@ -1,0 +1,26 @@
+<div class="serviceList">
+    <ng-container *ngFor="let i of cetegoryWithServices">
+        <div class="cetegoryTitle">
+            <h2>{{i?.name}}</h2>
+        </div>
+        <div (click)="onServiceSelect(j)" class="flexBox" *ngFor="let j of i?.services">
+            <img [src]="j?.image">
+            <div class="info" [ngClass]="{'selected': j.select}">
+                <div class="service-info">
+                    <div class="part-1">
+                        <h2>{{j?.name}}</h2>
+                        <h2><small>Duration: {{j?.duration}} minutes</small></h2>
+                    </div>
+                    <h2 class="service-price">
+                        <span *ngIf="data?.selectedCar?.Type == 'small'">{{j?.priceSmall}}</span>
+                        <span *ngIf="data?.selectedCar?.Type == 'medium'">{{j?.priceMedium}}</span>
+                        <span *ngIf="data?.selectedCar?.Type == 'large'">{{j?.priceLarge}}</span> RM
+                    </h2>
+                </div>
+                <p>
+                    Detailing Product : {{j?.description}}
+                </p>
+            </div>
+        </div>
+    </ng-container>
+</div>

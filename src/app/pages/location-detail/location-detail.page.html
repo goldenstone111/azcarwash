@@ -1,0 +1,286 @@
+<ion-header no-border>
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaulthref="tabs/home"
+        icon="md-arrow-back"
+        text=""
+        mode="md"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button
+        [ngClass]="{'btn-fav': isLiked}"
+        (click)="likedToggle()"
+        fill="clear"
+      >
+        <ion-icon name="md-heart"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="viewInGoogleMap()">
+        <ion-icon name="md-navigate"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <a href="tel:{{aboutData?.phoneNumber}}">
+          <ion-icon name="md-call"></ion-icon>
+        </a>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <div class="cover-image">
+    <img src="{{data?.image}}" />
+  </div>
+  <div class="shop-detail">
+    <div class="start-ribin">
+      {{aboutData?.avgRating | number:'1.1-1'}}
+      <ion-icon name="md-star"></ion-icon>
+    </div>
+    <h3 class="shop-name">
+      ({{userAddress?.title}}) {{userAddress?.condoName}}
+    </h3>
+    <p class="shop-address">
+      {{userAddress?.adressLine}} <br />
+      Parking Level: {{userAddress?.parkingLvl}} <br />
+      Parking Lot: {{userAddress?.lot}}
+    </p>
+  </div>
+  <div class="segment-section">
+    <div
+      class="segment-btn"
+      [ngClass]="{'active': activeSegment=='Services'}"
+      (click)="activeSegment='Services'"
+    >
+      <p>Services</p>
+      <div class="line"></div>
+    </div>
+    <div
+      class="segment-btn"
+      [ngClass]="{'active': activeSegment=='Package'}"
+      (click)="activeSegment='Package'"
+    >
+      <p>Package</p>
+      <div class="line"></div>
+    </div>
+    <div
+      class="segment-btn"
+      [ngClass]="{'active': activeSegment=='About'}"
+      (click)="activeSegment='About';initMap()"
+    >
+      <p>About</p>
+      <div class="line"></div>
+    </div>
+    <div
+      class="segment-btn"
+      [ngClass]="{'active': activeSegment=='Reviews'}"
+      (click)="activeSegment='Reviews'"
+    >
+      <p>Reviews</p>
+      <div class="line"></div>
+    </div>
+    <div
+      class="segment-btn"
+      [ngClass]="{'active': activeSegment=='FAQ'}"
+      (click)="activeSegment='FAQ'"
+    >
+      <p>FAQ</p>
+      <div class="line"></div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="service-list ion-padding" *ngIf="activeSegment=='Services'">
+    <div *ngFor="let item of serviceList | orderBy: 'seqNumber' : false : true">
+      <p class="service-sub-title">
+        {{item?.name}}
+        <ion-button
+          (click)="viewInfo(item)"
+          class="btn-infor ion-no-margin"
+          fill="clear"
+        >
+          <ion-icon name="information-circle-outline"></ion-icon>
+        </ion-button>
+      </p>
+      <ion-list>
+        <ion-item
+          *ngFor="let service of item?.services | orderBy: 'seqNumber' : false : true"
+          (click)="onServiceSelect(service)"
+          lines="none"
+        >
+          <ion-avatar slot="start">
+            <img [src]="service?.image" alt="" />
+          </ion-avatar>
+          <ion-label>
+            <h3>
+              <b>{{service?.name}}</b>
+              <div class="radio-section">
+                <div class="label-text">
+                  <small class="rm">RM</small>
+                  <span *ngIf="data?.selectedCar?.Type == 'small'"
+                    >{{service?.priceSmall}}</span
+                  >
+                  <span *ngIf="data?.selectedCar?.Type == 'medium'"
+                    >{{service?.priceMedium}}</span
+                  >
+                  <span *ngIf="data?.selectedCar?.Type == 'large'"
+                    >{{service?.priceLarge}}</span
+                  >
+                </div>
+                <input
+                  checked="true"
+                  id="checked"
+                  type="checkbox"
+                  class="css-checkbox"
+                  *ngIf="service?.select"
+                />
+                <input
+                  id="unChecked"
+                  type="checkbox"
+                  class="css-checkbox"
+                  *ngIf="!service?.select"
+                />
+              </div>
+            </h3>
+            <p><b>Duration: </b> {{service?.duration | minuteSeconds}}</p>
+            <p><b>Detailing Product: </b> {{service?.description}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+  <div class="package-list ion-padding" *ngIf="activeSegment=='Package'">
+    <div class="package-section" *ngFor="let item of (package | async)">
+      <h3 class="package-title">
+        {{item?.name}}
+        <ion-button
+          (click)="openModal(item)"
+          class="btn-infor ion-no-margin"
+          fill="clear"
+        >
+          <ion-icon name="information-circle-outline"></ion-icon>
+        </ion-button>
+      </h3>
+      <p class="price">
+        <small class="rm">RM</small>
+        <span *ngIf="data?.selectedCar?.Type == 'small'"
+          >{{item?.priceSmall}}</span
+        >
+        <span *ngIf="data?.selectedCar?.Type == 'medium'"
+          >{{item?.priceMedium}}</span
+        >
+        <span *ngIf="data?.selectedCar?.Type == 'large'"
+          >{{item?.priceLarge}}</span
+        >
+      </p>
+      <div class="service-item" *ngFor="let services of item?.servicesData">
+        <img
+          class="service-image"
+          src="{{services?.image}}"
+          alt=""
+        />{{services?.name}}
+      </div>
+      <p><b>Duration: </b> {{item?.duration | minuteSeconds}}</p>
+      <p><b>Detailing Product: </b> {{item?.description}}</p>
+    </div>
+  </div>
+  <div class="about-list ion-padding" *ngIf="activeSegment=='About'">
+    <h5>
+      OPENING HOURS
+      <span class="ion-float-right time-label"
+        >Open Now ({{aboutData?.startTime}}-{{aboutData?.endTime}})</span
+      >
+    </h5>
+    <h5 class="margin-top">ABOUT</h5>
+    <p class="description">{{aboutData?.about}}</p>
+    <h5 class="margin-top">
+      ADDRESS
+      <ion-button
+        fill="clear"
+        class="ion-float-right btn-direction ion-no-padding ion-text-capitalize"
+        >Get Direction
+      </ion-button>
+    </h5>
+    <p class="description">{{aboutData?.address}}</p>
+    <div #map id="map" class="mapStyle"></div>
+  </div>
+  <div class="review-list" *ngIf="activeSegment=='Reviews'">
+    <ion-row class="review-info-row">
+      <ion-col class="total-star-col" size="7">
+        <div class="start_label">
+          {{aboutData?.avgRating | number:'1.1-1'}}
+          <ion-icon name="star"></ion-icon>
+        </div>
+        {{aboutData.reviewData?.length}}People rated
+      </ion-col>
+      <ion-col class="select-col">
+        <ion-select
+          [interfaceOptions]="customAlertOptions"
+          class="ion-float-right"
+        >
+          <ion-select-option value="Newest First" selected
+            >Newest First</ion-select-option
+          >
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <div *ngFor="let item of aboutData.reviewData" class="review_card">
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img [src]="(item?.userData | async)?.image" alt="" />
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            {{(item?.userData | async)?.username}}
+            <div class="rating-bar">
+              <ion-icon
+                name="ios-star"
+                [ngClass]="{'active': item?.star >= 1}"
+              ></ion-icon>
+              <ion-icon
+                name="ios-star"
+                [ngClass]="{'active': item?.star >= 2}"
+              ></ion-icon>
+              <ion-icon
+                name="ios-star"
+                [ngClass]="{'active': item?.star >= 3}"
+              ></ion-icon>
+              <ion-icon
+                name="ios-star"
+                [ngClass]="{'active': item?.star >= 4}"
+              ></ion-icon>
+              <ion-icon
+                name="ios-star"
+                [ngClass]="{'active': item?.star >= 5}"
+              ></ion-icon>
+            </div>
+          </h3>
+          <p>{{item?.created_at | date}}</p>
+        </ion-label>
+      </ion-item>
+      <p class="description">{{item?.message}}</p>
+    </div>
+  </div>
+  <div class="faq-list ion-padding" *ngIf="activeSegment=='FAQ'">
+    <div class="question-section" *ngFor="let item of faqList">
+      <p class="question" [ngClass]="{'border-bottom': item.open==false}">
+        {{item?.question}}
+        <ion-button fill="clear" (click)="item.open = !item.open">
+          <ion-icon name="md-add" *ngIf="!item.open"></ion-icon>
+          <ion-icon name="md-remove" *ngIf="item.open"></ion-icon>
+        </ion-button>
+      </p>
+      <div class="answer-div" *ngIf="item.open">
+        <p class="description">{{item?.answer}}</p>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer *ngIf="activeSegment=='Services'">
+  <p>Total <small class="rm">RM</small> {{total}}</p>
+  <ion-button
+    [disabled]="total == 0 || !isEmpAvailable"
+    (click)="continue()"
+    shape="round"
+    class="ion-text-capitalize"
+  >
+    Continue
+  </ion-button>
+</ion-footer>

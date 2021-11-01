@@ -1,0 +1,65 @@
+:root {
+    --ion-color-primary: #056fb8;
+    --gradiant: linear-gradient(to right, #034470, #008ff2);
+    --gray: #e7e7e7;
+    --ion-color-darkGray: #bfbfbf;
+    --ion-color-white: #fff;
+    --ion-color-gray: #fff;
+    --ion-color-gray-shade: #808080;
+    --ion-color-light-Gray: #585353;
+    --ion-color-middle-Gray: #a3a3a3;
+    --ion-color-theme: #056fb8;
+    --ion-color-blue: #2470a7;
+    --ion-color-golden: #ef7f33;
+    --ion-color-light-green: #2cc500;
+    --ion-color-light-blue: #1e9bf1;
+    --ion-color-light-red: #f00;
+    --ion-color-black: #000000;
+    --ion-color-themeGray: #e7e7e7;
+}
+
+@font-face {
+    font-family: 'tofini_bold';
+    src: url('../assets/font/Lato-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'tofini_medium';
+    src: url('../assets/font/Lato-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'tofini_regular';
+    src: url('../assets/font/Lato-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'tofini_book';
+    src: url('../assets/font/Lato-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Tofino_Bold';
+    src: url('../assets/font/Lato-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Tofino_Medium';
+    src: url('../assets/font/Lato-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Tofino_Regular';
+    src: url('../assets/font/Lato-Regular.ttf');
+}
+
+.rm {
+    margin-right: 2px;
+    color: #808080;
+    font-size: 75%;
+}
+
+b {
+    font-weight: normal !important;
+    font-family: "tofini_bold" !important;
+}

@@ -1,0 +1,48 @@
+ion-list {
+    padding-top: 0px;
+    ion-item {
+        margin-bottom: 16px;
+        .carInfo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                height: 54px;
+                width: 54px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            .addCircle {
+                height: 54px;
+                width: 54px;
+                border-radius: 50%;
+                object-fit: cover;
+                background: #4b4848;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                ion-icon {
+                    color: white;
+                    font-size: 22px;
+                }
+            }
+            .conent {
+                margin-left: 13px;
+                h2 {
+                    margin: 0;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #000;
+                    font-family: "tofini_bold";
+                    margin-bottom: 5px;
+                }
+                p {
+                    margin: 0;
+                    font-size: 13px;
+                    color: var(--ion-color-gray-shade);
+                    font-family: 'tofini_medium';
+                }
+            }
+        }
+    }
+}

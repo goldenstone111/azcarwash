@@ -1,0 +1,28 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home" icon="ios-arrow-back"> </ion-back-button>
+        </ion-buttons>
+        <ion-title> My Cars</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="car-card" *ngFor="let i of (carCollection | async)"> <img [src]="i?.image_1" alt="">
+        <div class="car-detail">
+            <h3 class="car-name">{{i?.Brand}}
+                <div class="dot"></div> <span class="small-label">{{i?.Model}}</span> </h3>
+            <p class="no-label">{{i?.Number}}</p>
+            <ion-button (click)="presentPopover($event,i)" fill="clear">
+                <ion-icon name="md-more"></ion-icon>
+            </ion-button>
+        </div>
+    </div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="goToAddCar()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <div class="noDataFullScreen" *ngIf="(carCollection | async)?.length == 0">
+        <h2>No data found</h2>
+    </div>
+</ion-content>

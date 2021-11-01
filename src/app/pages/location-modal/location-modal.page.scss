@@ -1,0 +1,126 @@
+ion-content {
+    .container {
+        .row1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 18px 14px 0px;
+            .icon-container {
+                margin: auto;
+                background: var(--gray);
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                ion-icon {
+                    font-size: 27px;
+                    color: var(--ion-color-theme)
+                }
+                img {
+                    border-radius: 50%;
+                    padding: 10px;
+                }
+            }
+            .locationInfo {
+                flex: 1;
+                margin-left: 10px;
+                h2 {
+                    font-size: 15px;
+                    margin: 0px;
+                    font-weight: 500;
+                    font-family: "tofini_medium";
+                    margin-bottom: 2px;
+                    padding-right: 48px;
+                }
+                p {
+                    font-size: 13px;
+                    margin: 0px;
+                    font-weight: 500;
+                    font-family: "tofini_medium";
+                    color: #80808085;
+                }
+            }
+        }
+        .row2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 18px 14px 0px;
+            .call-icon {
+                border: 1px solid var(--ion-color-theme);
+                border-radius: 50%;
+                height: 40px;
+                width: 40px;
+                display: flex;
+                min-width: 40px;
+                min-height: 40px;
+                margin-right: 9px;
+                justify-content: center;
+                align-items: center;
+                --padding-start: 0px;
+                --padding-end: 0px;
+                a {
+                    display: flex;
+                    ion-icon {
+                        color: var(--ion-color-theme);
+                        font-size: 16px;
+                    }
+                }
+            }
+            .priceInfo {
+                h2 {
+                    font-size: 13px;
+                    margin: 0px;
+                    font-weight: 500;
+                    font-family: "tofini_medium";
+                    color: #80808085;
+                }
+                p {
+                    font-size: 15px;
+                    margin: 0px;
+                    font-weight: 500;
+                    font-family: "tofini_medium";
+                    margin-bottom: 2px;
+                }
+            }
+            ion-button {
+                --padding-start: 11px;
+                --padding-end: 11px;
+                --border-width: 1px;
+                font-size: 12px;
+                height: 29px;
+                width: auto;
+                text-transform: capitalize;
+            }
+        }
+    }
+}
+
+.start-ribin {
+    width: 44px;
+    float: right;
+    text-align: center;
+    background: #0377cb;
+    color: var(--ion-color-white);
+    font-size: 13px;
+    padding: 4px 2px 0px;
+    font-family: 'Tofino_Regular';
+    position: absolute;
+    right: 8px;
+    z-index: 5555;
+    top: 0px;
+}
+
+.start-ribin:after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    border-left: 22px solid #0377cb;
+    border-right: 22px solid #0377cb;
+    border-bottom: 4px solid #0000;
+    right: 0px;
+    top: 18px;
+    height: 31%;
+}

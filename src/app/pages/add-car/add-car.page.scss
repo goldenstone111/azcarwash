@@ -1,0 +1,77 @@
+ion-header {
+    ion-toolbar {
+        ion-back-button {
+            --padding-end: 0;
+            --padding-start: 0;
+            margin-left: 7px;
+            color: var( --ion-color-theme);
+            min-width: 31px !important;
+        }
+        ion-title {
+            padding-left: 7px;
+            font-size: 20px;
+            font-family: 'tofini_medium';
+        }
+    }
+}
+
+ion-content {
+    .imgPlaceholder {
+        background: #e8e8e8;
+        height: 12rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .carImg {
+            height: 100%;
+            width: 100%;
+            padding: 10px;
+        }
+        .cameraIcon {
+            height: 80px;
+            width: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--gradiant);
+            border-radius: 50%;
+            ion-icon {
+                font-size: 37px;
+                color: var(--ion-color-white);
+            }
+        }
+    }
+    form {
+        margin-top: 13px;
+        ion-text {
+            font-size: 13px;
+            color: #898891;
+            font-family: 'tofini_bold';
+        }
+        ion-item {
+            --padding-start: 0px;
+            margin-bottom: 11px;
+            ion-label {
+                font-size: 17px;
+                color: #898891;
+                font-family: "tofini_medium";
+            }
+            ion-input,
+            ion-select {
+                --padding-start: 0px;
+                --padding-bottom: 1px;
+                --padding-top: 12px;
+                margin: 2px 0px;
+                font-size: 15px;
+                font-family: "tofini_bold";
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        .btn-style {
+            text-transform: capitalize;
+        }
+    }
+}

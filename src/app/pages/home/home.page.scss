@@ -1,0 +1,479 @@
+ion-content {
+    &.back {
+        --background: #e7e7e7;
+    }
+    .menu {
+        height: 53px;
+        width: 66px;
+        position: absolute;
+        top: 16px;
+        left: 0;
+        background: var(--ion-color-themeGray);
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top-right-radius: 22px;
+        border-bottom-right-radius: 22px;
+        ion-menu-button {
+            --padding-start: 0px;
+            font-size: 29px;
+            color: var(--ion-color-theme)
+        }
+    }
+    .mapStyle {
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+    .bottomNavigator {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: var(--ion-color-themeGray);
+        z-index: 999;
+        margin: 10px;
+        width: calc(100% - 20px);
+        margin-bottom: 0px;
+        .firstRow {
+            border-bottom: 1px solid #80808047;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .active {
+                background: var(--gradiant) !important;
+                ion-icon {
+                    color: var(--ion-color-white) !important;
+                }
+            }
+            .option {
+                .icon-container {
+                    margin: auto;
+                    margin-top: 20px;
+                    background: var(--ion-color-white);
+                    height: 60px;
+                    width: 60px;
+                    border-radius: 50%;
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                    ion-icon {
+                        font-size: 27px;
+                        color: var(--ion-color-theme)
+                    }
+                }
+                p {
+                    font-size: 14px;
+                    margin-top: 8px;
+                    margin-bottom: 4px;
+                    text-align: center;
+                    color: var(--ion-color-gray-shade);
+                    font-weight: 500;
+                    font-family: 'tofini_medium';
+                }
+                h2 {
+                    font-size: 11px;
+                    margin-top: 3px;
+                    margin-bottom: 8px;
+                    text-align: center;
+                    color: var(--ion-color-gray-shade);
+                    font-weight: 500;
+                    font-family: 'tofini_medium';
+                }
+            }
+        }
+    }
+    .secondRow {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .bookRoundBtn {
+            --padding-start: 11px;
+            --padding-end: 11px;
+            --border-width: 1px;
+            font-size: 12px;
+            height: 29px;
+            width: auto;
+            text-transform: capitalize;
+            border: 1px solid #01538a;
+            border-radius: 23px;
+        }
+        .active {
+            background: var(--gradiant) !important;
+            ion-icon {
+                color: var(--ion-color-white) !important;
+            }
+        }
+        .icon-container {
+            margin: auto;
+            background: var(--ion-color-white);
+            height: 60px !important;
+            width: 60px !important;
+            min-width: 60px;
+            border-radius: 50%;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            display: flex;
+            ion-icon {
+                font-size: 27px !important;
+                color: var(--ion-color-theme)
+            }
+        }
+        ion-button {
+            ion-icon {
+                color: var(--ion-color-gray-shade)
+            }
+        }
+        ion-icon {
+            font-size: 24px;
+        }
+        .service-text {
+            margin-left: 12px;
+            flex: 1;
+            h2 {
+                margin: 0;
+                font-size: 15px;
+                font-family: 'tofini_medium';
+            }
+            p {
+                margin: 0;
+                font-size: 12px;
+                display: flex;
+                align-items: center;
+                margin-top: 3px;
+                font-family: 'tofini_regular';
+                color: var(--ion-color-gray-shade);
+                ion-icon {
+                    margin-right: 6px;
+                }
+            }
+        }
+    }
+}
+
+.ion-bottom-drawer {
+    margin: 10px;
+    width: calc(100% - 20px);
+    .drawer-content {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+    }
+    .closeBtn {
+        color: var(--ion-color-black);
+    }
+    .ion-list-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        ion-icon {
+            font-size: 22px;
+            color: var(--ion-color-theme);
+        }
+        ion-list {
+            padding-top: 0px;
+        }
+    }
+    .carCollection {
+        ion-list {
+            width: 100%;
+            padding-top: 0px;
+            ion-item {
+                margin-bottom: 16px;
+                .carInfo {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    img {
+                        height: 54px;
+                        width: 54px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                    .addCircle {
+                        height: 54px;
+                        width: 54px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        background: #4b4848;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        ion-icon {
+                            color: white;
+                            font-size: 22px;
+                        }
+                    }
+                    .conent {
+                        margin-left: 13px;
+                        h2 {
+                            margin: 0;
+                            font-size: 14px;
+                            font-weight: 600;
+                            color: #000;
+                            font-family: "tofini_medium";
+                            margin-bottom: 5px;
+                        }
+                        p {
+                            margin: 0;
+                            font-size: 13px;
+                            color: var(--ion-color-gray-shade);
+                            font-family: 'tofini_medium';
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .serviceList {
+        background: white;
+        .categoryTitle {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding-bottom: 4px;
+            h2 {
+                padding-bottom: 5px;
+                font-size: 16px;
+                color: var(--ion-color-gray-shade);
+                margin: 0px 20px 0px 10px;
+                font-family: 'tofini_medium';
+                .btn-infor {
+                    --color: var(--ion-color-darkGray);
+                    --color-activated: var(--ion-color-darkGray);
+                    --padding-start: 0px;
+                    --padding-end: 0px;
+                    height: auto;
+                    float: right;
+                    font-size: 16px;
+                }
+            }
+        }
+        .flexBox {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            padding: 12px 18px;
+            background: var(--gray);
+            margin: 9px;
+            border-radius: 8px;
+            .service-price {
+                margin: 0;
+                font-size: 19px;
+                font-family: 'tofini_bold';
+                display: -webkit-box;
+                .rm {
+                    display: -webkit-box;
+                }
+            }
+            img {
+                height: 60px;
+                width: 60px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-right: 11px;
+            }
+            .info {
+                width: 100%;
+                &.selected {
+                    font-size: 16px;
+                    background: var(--gradiant);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+                .service-info {
+                    display: -webkit-box;
+                    justify-content: space-between;
+                    flex: 1;
+                    align-items: center;
+                    .part-1 {
+                        h2 {
+                            margin: 0;
+                            font-size: 16px;
+                            font-family: 'tofini_medium';
+                            &:last-child {
+                                font-family: 'tofini_regular';
+                                margin-top: -3px;
+                            }
+                        }
+                    }
+                    
+                }
+                p {
+                    margin: 0;
+                    font-size: 10px;
+                    margin-top: 3px;
+                    font-family: 'tofini_regular';
+                }
+            }
+        }
+    }
+    .dateTime {
+        .container {
+            background: var(--gray);
+            height: 235px;
+            .title {
+                margin: 0;
+                font-size: 17px;
+                margin-bottom: 15px;
+                color: var(--ion-color-gray-shade);
+                text-align: center;
+            }
+            .scrollContainer {
+                display: flex;
+                overflow: scroll;
+                .cal {
+                    margin: 6px 12px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    h2 {
+                        font-size: 16px;
+                        margin: 7px 0px;
+                        &:last-child {
+                            font-size: 13px;
+                        }
+                    }
+                    .date {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background: var(--gray);
+                        &.selectedDate {
+                            background: var(--gradiant);
+                            h2 {
+                                color: #fff !important;
+                            }
+                        }
+                        h2 {
+                            color: gray;
+                            font-size: 20px;
+                            font-family: 'tofini_medium';
+                        }
+                    }
+                }
+                .time-container {
+                    margin: 6px 16px;
+                    &.disabledTime {
+                        opacity: 0.7;
+                        .time {
+                            h2{
+                                color: red !important
+                            }
+                        }
+                        h2 {
+                            color: red !important
+                        }
+                    }
+                    .time {
+                        width: 93px;
+                        height: 40px;
+                        border-radius: 25px;
+                        display: flex;
+                        -webkit-box-pack: center;
+                        justify-content: center;
+                        -webkit-box-align: center;
+                        align-items: center;
+                        &.selectedTime {
+                            background: var(--gradiant);
+                            h2 {
+                                color: white;
+                            }
+                        }
+                        h2 {
+                            margin: 0;
+                            color: gray;
+                            font-size: 17px;
+                            font-family: 'tofini_medium';
+                        }
+                    }
+                    .am-pm {
+                        margin: 0;
+                        text-align: center;
+                        font-size: 15px;
+                        font-family: 'tofini_medium';
+                        color: gray
+                    }
+                }
+            }
+        }
+    }
+}
+
+.disabled {
+    pointer-events: none !important;
+    opacity: 0.5;
+    ion-button {
+        pointer-events: none !important;
+    }
+}
+
+  /* Choose all input elements that have the attribute: type="radio" and make them disappear.*/
+input[type="radio"] {
+    display:none;
+  }
+  
+  /* The label is what's left to style. 
+  As long as its 'for' attribute matches the input's 'id', it will maintain the function of a radio button. */
+ 
+ 
+ 
+  label {
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    color: gray;
+    text-align: center;
+    padding: 10px 0 0 0;
+}
+  label span{
+    height: 40px;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:gray;
+  }
+  
+ .disabledTime label {
+    color: red;
+ }
+ .disabledTime label span{
+    color: red;
+ }
+  .blank-label {
+    display: none;
+  }
+  
+  /* The '+' is the adjacent sibling selector.
+  It selects what ever element comes right after it,
+  as long as it is a sibling. */
+  input[type="radio"]:checked + label {
+    background: transparent;
+    color: gray;
+    text-align: center;
+    padding: 10px 0 0 0;
+  }
+
+  input[type="radio"]:checked + label>span {
+    background: var(--gradiant);
+    color:white;
+    border-radius: 25px;
+    height: 40px;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  

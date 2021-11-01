@@ -1,0 +1,25 @@
+<ion-content>
+    <div class="package-list ion-padding">
+        <div class="package-section">
+            <h3 class="package-title">{{package?.name}}</h3>
+            <p class="price">
+                RM <span *ngIf="selectedData?.selectedCar?.Type == 'small'">{{package?.priceSmall}}</span>
+                <span *ngIf="selectedData?.selectedCar?.Type == 'medium'">{{package?.priceMedium}}</span>
+                <span *ngIf="selectedData?.selectedCar?.Type == 'large'">{{package?.priceLarge}}</span>
+            </p>
+            <div class="service-item" *ngFor="let services of package?.servicesData">
+                <img class="service-image" src="{{services?.image}}" alt=""> {{services?.name}}
+            </div>
+            <div class="flexBox">
+                <div>
+                    <p><b>Duration : </b>{{package?.duration}}- min</p>
+                    <p><b>Detailing Product : </b>{{package?.description}}</p>
+                </div>
+                <div>
+                    <ion-button (click)="continue()">Book</ion-button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</ion-content>

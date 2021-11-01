@@ -1,0 +1,158 @@
+ion-header {
+    ion-toolbar {
+        --background: var(--gray);
+        ion-back-button {
+            --color: var(--ion-color-theme);
+        }
+        ion-title {
+            font-size: 21px;
+            font-family: 'Tofino_Medium';
+            color: var(--ion-color-black);
+            padding-inline-start: 0px;
+        }
+    }
+}
+
+ion-content {
+    .title {
+        font-family: 'Tofino_Regular';
+        font-size: 16px;
+        background: var(--gradiant);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .small-text {
+        margin: 5px 0px 0px;
+        font-size: 12px;
+        font-family: 'Tofino_Regular';
+        color: #8c8b9d;
+    }
+    .bold-text {
+        font-size: 14px;
+        font-family: 'Tofino_Medium';
+        margin: 0px;
+        ion-icon {
+            font-size: 17px;
+            margin-bottom: -3px;
+        }
+    }
+    .address-text {
+        margin-bottom: 0px;
+        font-size: 12px;
+        font-family: 'Tofino_Medium';
+    }
+    .border-bottom {
+        border-bottom: 1px solid var(--ion-color-darkGray);
+    }
+    .provider_section,
+    .car_selected,
+    .location_selected {
+        padding: 4px 20px 16px;
+    }
+    .label-add-on {
+        text-align: center;
+        font-size: 11px;
+        font-family: 'Tofino_Regular';
+        color: var(--ion-color-theme);
+    }
+    .add-on-list {
+        padding: 0px 13px;
+        .service-sub-title {
+            color: #7f7f7f;
+            margin: 0px;
+        }
+        ion-item {
+            --padding-start: 0px;
+            --inner-padding-end: 0px;
+            ion-avatar {
+                width: 50px;
+                height: 50px;
+            }
+            ion-label {
+                h3 {
+                    font-size: 15px;
+                    font-family: 'Tofino_Medium';
+                    padding-right: 75px;
+                    position: relative;
+                    white-space: normal;
+                    .radio-section {
+                        display: flex;
+                        position: absolute;
+                        top: 0px;
+                        right: 0px;
+                        .label-text {
+                            width: fit-content;
+                            margin-right: 16px;
+                        }
+                        input[type='checkbox'] {
+                            -webkit-appearance: none;
+                            -moz-appearance: none;
+                            appearance: none;
+                            display: inline-block;
+                            width: 20px;
+                            height: 20px;
+                            padding: 1px;
+                            background-clip: content-box;
+                            border: 2px solid #bbb;
+                            border-radius: 50%;
+                        }
+                        /* appearance for checked radiobutton */
+                        input[type='checkbox']:checked {
+                            background-image: url('../../../assets/imgs/Icon-awesome-check.svg');
+                            border-color: var(--ion-color-theme);
+                            background-size: 12px;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                        }
+                    }
+                }
+                p {
+                    font-size: 11px;
+                    margin-bottom: 0px;
+                    font-family: 'Tofino_regular';
+                    white-space: normal;
+                    line-height: 15px;
+                }
+            }
+        }
+    }
+    .services_total_section {
+        padding: 16px 20px 20px;
+        background: var(--gray);
+        ion-row {
+            .service-label {
+                font-family: 'Tofino_Medium';
+                font-size: 15px;
+            }
+            .price-label {
+                font-size: 15px;
+                font-family: 'Tofino_Medium';
+                color: var(--ion-color-light-Gray);
+                display: flex;
+                justify-content: flex-end;
+                font-family: "Tofino_Bold";
+                small {
+                    margin-left: 5px;
+                }
+            }
+            .total-label {
+                font-size: 17px;
+                color: var(--ion-color-theme);
+                padding-top: 5px;
+                display: flex;
+                justify-content: flex-end;
+                font-family: "Tofino_Bold";
+            }
+        }
+    }
+}
+
+ion-footer {
+    ion-button {
+        height: 44px;
+        font-family: 'Tofino_Regular';
+        font-size: 15px;
+        --background: var(--gradiant);
+        --background-activated: var(--gradiant);
+    }
+}

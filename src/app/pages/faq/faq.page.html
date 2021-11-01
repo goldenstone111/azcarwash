@@ -1,0 +1,26 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home" icon="ios-arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>FAQ's</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="faq-list ion-padding">
+        <div class="question-section" *ngFor="let item of faqList">
+            <p class="question" [ngClass]="{'border-bottom': item.open==false}">{{item?.question}}
+                <ion-button fill="clear" (click)="item.open = !item.open">
+                    <ion-icon name="md-add" *ngIf="!item.open"></ion-icon>
+                    <ion-icon name="md-remove" *ngIf="item.open"></ion-icon>
+                </ion-button>
+            </p>
+            <div class="answer-div" *ngIf="item.open">
+                <p class="description">{{item?.answer}}</p>
+            </div>
+        </div>
+    </div>
+
+</ion-content>

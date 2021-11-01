@@ -1,0 +1,116 @@
+ion-header {
+    ion-toolbar {
+        ion-back-button {
+            --color: var(--ion-color-theme);
+        }
+        ion-title {
+            font-size: 21px;
+            font-family: 'Tofino_Medium';
+            color: var(--ion-color-black);
+            padding-inline-start: 0px;
+        }
+    }
+}
+
+ion-content {
+    --padding-start: 10px;
+    --padding-end: 10px;
+    .title {
+        font-size: 14px;
+        font-family: 'Tofino_Regular';
+        color: var(--ion-color-light-Gray);
+        margin-bottom: 5px;
+    }
+    .card-div {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 16px 12px 12px;
+        display: inline-flex;
+        width: 100%;
+        position: relative;
+        border-radius: 5px;
+        margin: 14px 0px 10px;
+        .profile-div {
+            width: 60px;
+            min-width: 53px;
+            .profile-image {
+                height: 45px;
+                width: 45px;
+                min-width: 45px;
+                min-height: 45px;
+                border-radius: 50%;
+            }
+        }
+        .info-section {
+            h4 {
+                margin-top: 3px;
+                margin-bottom: 4px;
+                font-size: 18px;
+                font-family: 'Tofino_Medium';
+            }
+            .address-text {
+                font-size: 12px;
+                font-family: 'Tofino_regular';
+                margin: 7px 0px 18px;
+            }
+            .book-info {
+                font-family: 'Tofino_Regular';
+                font-size: 12px;
+                margin-bottom: 8px;
+                margin-top: 16px;
+            }
+        }
+        .btn-div {
+            position: absolute;
+            top: -16px;
+            right: 8px;
+            ion-button {
+                height: 2.2em;
+                font-family: 'Tofino_Regular';
+                font-size: 12px;
+                --padding-top: 2px;
+                margin-inline-end: 5px;
+                --box-shadow: none;
+            }
+            .btn-confirm {
+                --background: var(--ion-color-light-green);
+                --background-activated: var(--ion-color-light-green);
+            }
+            .btn-pending {
+                --background: var(--ion-color-light-blue);
+                --background-activated: var(--ion-color-light-blue);
+            }
+            .btn-cancle {
+                --background: var(--ion-color-light-red);
+                --background-activated: var(--ion-color-light-red);
+            }
+            .btn-view {
+                --background: var(--ion-color-middle-Gray);
+                --background-activated: var(--ion-color-middle-Gray);
+            }
+            .btn-rate {
+                --background: var(--gradiant);
+                --background-activated: var(--gradiant);
+            }
+        }
+    }
+    .up-coming-book {
+        background-color: #0d6eb8;
+        h4 {
+            color: var(--ion-color-white);
+        }
+        p {
+            color: #d1cfcf;
+        }
+    }
+    .past-book {
+        background-color: var(--gray);
+        .address-text {
+            color: var(--ion-color-middle-Gray);
+        }
+        h4,
+        p {
+            color: var(--ion-color-light-Gray);
+        }
+    }
+}
